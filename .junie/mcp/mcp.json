@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "C:\\Users\\Windows 10-Pro\\.config\\herd\\bin\\php84\\php.exe",
+            "args": [
+                "C:\\Users\\Windows 10-Pro\\Herd\\bookify\\artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
