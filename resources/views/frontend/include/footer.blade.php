@@ -15,24 +15,22 @@
                     </p>
                 </div>
 
-                <!-- Column 1 -->
-                <div>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">About</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                    </ul>
-                </div>
+            <div>
+    <ul class="space-y-3 text-sm text-gray-400">
+        <li><a href="{{ route('about') }}" class="hover:text-white transition">About</a></li>
+        <li><a href="{{ route('privacy') }}" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="{{ route('careers') }}" class="hover:text-white transition">Careers</a></li>
+    </ul>
+</div>
 
-                <!-- Column 2 -->
-                <div>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Help Centre</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white transition">Press</a></li>
-                    </ul>
-                </div>
-            </div>
+<!-- Column 2 -->
+<div>
+    <ul class="space-y-3 text-sm text-gray-400">
+        <li><a href="{{ route('help.centre') }}" class="hover:text-white transition">Help Centre</a></li>
+        <li><a href="{{ route('terms') }}" class="hover:text-white transition">Terms of Service</a></li>
+        <li><a href="{{ route('press') }}" class="hover:text-white transition">Press</a></li>
+    </ul>
+</div>
 
             <!-- Bottom Copyright Bar -->
             <div class="border-t border-gray-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">

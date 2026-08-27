@@ -16,11 +16,11 @@
                 
                 <a href="{{ route('events') }}" class="{{ request()->routeIs('events') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">All Events</a>
 
-                <!-- Offers & Promos -->
-                <a href="#" class="text-gray-400 hover:text-white px-3 py-1.5 transition">Offers</a>
+               <!-- Offers & Promos -->
+<a href="{{ route('offers') }}" class="{{ request()->routeIs('offers') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Offers</a>
 
-                <!-- Support / Contact -->
-                <a href="#" class="text-gray-400 hover:text-white px-3 py-1.5 transition">Support</a>
+<!-- Support / Contact -->
+<a href="{{ route('support') }}" class="{{ request()->routeIs('support') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Support</a>
             </div>
         </div>
 

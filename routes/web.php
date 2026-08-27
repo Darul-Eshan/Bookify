@@ -17,3 +17,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/login', function () {return view('backend.layout.master'); })->name('admin.login');
 Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 Route::get('/cart', function () {return view('frontend.cart');})->name('cart');
+Route::view('/offers', 'frontend.offers')->name('offers');
+Route::view('/support', 'frontend.support')->name('support');
+
+
+Route::view('/about', 'frontend.about')->name('about');
+Route::view('/privacy-policy', 'frontend.privacy')->name('privacy');
+Route::view('/careers', 'frontend.careers')->name('careers');
+Route::view('/help-centre', 'frontend.help-centre')->name('help.centre');
+Route::view('/terms', 'frontend.terms')->name('terms');
+
+Route::view('/press', 'frontend.press')->name('press');
