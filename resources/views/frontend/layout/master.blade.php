@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bookify</title>
+    <title>Bookify - E-Ticket Booking</title>
 
-    <!-- Tailwind CSS (Vite / App CSS) Link -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Tailwind CSS Play CDN (ডিজাইন ও ব্যাকগ্রাউন্ড ঠিক রাখার জন্য) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font -->
+    <!-- Alpine.js (কার্ট ড্রপডাউন পপআপ কাজ করার জন্য) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }

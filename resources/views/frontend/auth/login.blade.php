@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - E-Ticket</title>
@@ -18,7 +17,7 @@
 <body class="bg-[#0B0B14] text-gray-200 antialiased selection:bg-purple-600 selection:text-white">
 
     <div class="relative min-h-[calc(100vh-140px)] flex items-center justify-center py-12 px-6 overflow-hidden">
-    <!-- Glowing Background Lights (থিমের সাথে গ্লো ইফেক্ট) -->
+    <!-- Glowing Background Lights -->
     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-10 right-10 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -28,7 +27,7 @@
             
             <!-- Logo & Title -->
             <div class="text-center mb-8">
-                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-3">
+                <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-white font-bold text-2xl tracking-tight mb-3">
                     <span class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2.5 rounded-xl text-white shadow-lg shadow-purple-600/30">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
                     </span>
@@ -38,8 +37,19 @@
                 <p class="text-sm text-gray-400 mt-1">Sign in to manage your tickets & events</p>
             </div>
 
+            <!-- Validation Errors Show -->
+            @if ($errors->any())
+                <div class="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- Sign In Form -->
-            <form action="#" method="POST" class="space-y-5">
+            <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
                 @csrf
 
                 <!-- Email Input -->
@@ -49,7 +59,7 @@
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-400">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
                         </span>
-                        <input type="email" id="email" name="email" required placeholder="name@example.com" class="w-full bg-[#161628] text-sm text-white border border-gray-800 rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition">
+                        <input type="email" id="email" name="email" value="{{ old('email') }}" required placeholder="name@example.com" class="w-full bg-[#161628] text-sm text-white border border-gray-800 rounded-xl pl-11 pr-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 placeholder-gray-500 transition">
                     </div>
                 </div>
 
@@ -112,8 +122,7 @@
 
         </div>
     </div>
-</div>,
+</div>
 
-    
 </body>
 </html>
