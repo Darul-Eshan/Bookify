@@ -12,7 +12,9 @@
                 
                 <div class="hidden md:flex items-center gap-2 bg-[#161626] border border-gray-800 rounded-lg px-3 py-1.5 text-sm">
                     <a href="{{route('home')}}" class="bg-[#232338] text-white px-3 py-1 rounded-md transition font-medium">Home</a>
-                    <a href="#" class="text-gray-400 hover:text-white px-3 py-1 transition font-medium">All Events</a>
+                    <a href="{{ route('events') }}" class="{{ request()->routeIs('events') ? 'text-purple-400 font-semibold border-b-2 border-purple-500 pb-1' : 'hover:text-purple-400 transition' }}">
+    All Events
+</a>
                 </div>
             </div>
 

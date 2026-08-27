@@ -11,5 +11,6 @@ Route::get('/login', [AuthConntroller::class, 'login'])->name('login');
 Route::get('/register', [AuthConntroller::class, 'register'])->name('register');
 Route::post('/register/store', [AuthConntroller::class, 'registerStore'])->name('register.store');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 
     
