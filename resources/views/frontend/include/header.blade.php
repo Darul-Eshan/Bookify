@@ -102,10 +102,10 @@
                         </div>
 
                         <div class="grid grid-cols-2 gap-2">
-                            <a href="{{ route('cart') }}" class="block text-center py-2.5 bg-[#1f1f38] hover:bg-[#282848] text-white text-xs font-semibold rounded-xl border border-gray-700/60 transition">
+                            <a href="{{ route('cart.view') }}" class="block text-center py-2.5 bg-[#1f1f38] hover:bg-[#282848] text-white text-xs font-semibold rounded-xl border border-gray-700/60 transition">
                                 View Cart
                             </a>
-                            <a href="{{ route('cart') }}" class="block text-center py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-semibold rounded-xl shadow-lg shadow-purple-600/30 transition">
+                            <a href="{{ route('checkout.view') }}" class="block text-center py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-semibold rounded-xl shadow-lg shadow-purple-600/30 transition">
                                 Checkout
                             </a>
                         </div>

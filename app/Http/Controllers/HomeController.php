@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
 
 
-    public function eventDetails($id)
+    public function eventDetails($id = null)
 {
     $events = [
         1 => [
@@ -58,7 +58,11 @@ class HomeController extends Controller
         ],
     ];
 
-    $event = $events[$id] ?? abort(404, 'Event not found');
+    if (!$id || !isset($events[$id])) {
+        $event = $events[1]; // অথবা abort(404);
+    } else {
+        $event = $events[$id];
+    }
 
     return view('frontend.event-details', compact('event'));
 }

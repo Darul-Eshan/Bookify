@@ -15,11 +15,14 @@ Route::post('/register/store', [AuthConntroller::class, 'registerStore'])->name(
 Route::get('/admin/dashboard', function () {return view('backend.layout.master'); })->name('admin.dashboard');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/login', function () {return view('backend.layout.master'); })->name('admin.login');
-Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
+Route::get('/allevents', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 Route::get('/cart', function () {return view('frontend.cart');})->name('cart');
 Route::view('/offers', 'frontend.offers')->name('offers');
 Route::view('/support', 'frontend.support')->name('support');
-Route::get('/events/{id}', [App\Http\Controllers\HomeController::class, 'eventDetails'])->name('events.details');
+Route::get('/events/{id?}', [App\Http\Controllers\HomeController::class, 'eventDetails'])->name('events.details');
+Route::get('/viewcart', function () {return view('frontend.cart');})->name('cart.view');
+Route::get('/checkout', function () {return view('frontend.checkout');})->name('checkout.view');
+
 
 
 Route::view('/about', 'frontend.about')->name('about');
