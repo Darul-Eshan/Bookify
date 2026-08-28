@@ -97,7 +97,7 @@
                     <h2 class="text-xl font-bold text-white flex items-center gap-2">
                         Showing <span id="categoryNameTitle" class="text-purple-400">All Events</span>
                     </h2>
-                    <p class="text-xs text-gray-400 mt-0.5">Verified e-tickets for events across Bangladesh</p>
+                    <p class="text-xs text-gray-400 mt-0.5">Verified e-tickets for events across Bangladesh[cite: 6]</p>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -111,10 +111,10 @@
                 </div>
             </div>
 
-            <!-- Event Cards Grid (At least 4 events per category) -->
+            <!-- Event Cards Grid -->
             <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- 1. MUSIC 1 -->
+                <!-- 1. MUSIC -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -143,16 +143,15 @@
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Starting From</span>
-                            <span class="text-lg font-extrabold text-white">BDT 1,200</span>
+                            <span class="text-lg font-extrabold text-white ">BDT 1,200</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 2. TECH 1 -->
+                <!-- 2. TECH -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -181,16 +180,15 @@
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Pass Type</span>
                             <span class="text-lg font-extrabold text-emerald-400">FREE</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
-                            Register Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 3. ARTS 1 -->
+                <!-- 3. ARTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -219,16 +217,15 @@
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Entry Ticket</span>
                             <span class="text-lg font-extrabold text-white">BDT 500</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 4. ESPORTS 1 -->
+                <!-- 4. ESPORTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -256,17 +253,16 @@
                         </div>
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
-                        <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Starting From</span>
+                        <div>                            
                             <span class="text-lg font-extrabold text-white">BDT 350</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                       <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 5. BUSINESS 1 -->
+                <!-- 5. BUSINESS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -295,16 +291,15 @@
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Delegate Pass</span>
                             <span class="text-lg font-extrabold text-white">BDT 2,500</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 6. MUSIC 2 -->
+                <!-- 6. MUSIC -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -333,16 +328,15 @@
                     </div>
                     <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Pass Price</span>
                             <span class="text-lg font-extrabold text-white">BDT 1,800</span>
                         </div>
-                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                       <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- 7. TECH 2 -->
+                <!-- 7. TECH -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -380,7 +374,7 @@
                     </div>
                 </div>
 
-                <!-- 8. ARTS 2 -->
+                <!-- 8. ARTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -403,7 +397,7 @@
                                 <span>•</span>
                                 <span class="truncate"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Zainul Gallery, DU, Dhaka</span>
                             </div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition line-clamp-1"> Dhaka National Fine Arts Exhibition</h3>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition line-clamp-1">Dhaka National Fine Arts Exhibition</h3>
                             <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Showcasing contemporary paintings, sculptures, and digital art pieces crafted by talented national artists.</p>
                         </div>
                     </div>
@@ -418,7 +412,7 @@
                     </div>
                 </div>
 
-                <!-- 9. ESPORTS 2 -->
+                <!-- 9. ESPORTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -456,7 +450,7 @@
                     </div>
                 </div>
 
-                <!-- 10. BUSINESS 2 -->
+                <!-- 10. BUSINESS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -494,7 +488,7 @@
                     </div>
                 </div>
 
-                <!-- 11. MUSIC 3 -->
+                <!-- 11. MUSIC -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -532,7 +526,7 @@
                     </div>
                 </div>
 
-                <!-- 12. TECH 3 -->
+                <!-- 12. TECH -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -570,7 +564,7 @@
                     </div>
                 </div>
 
-                <!-- 13. ARTS 3 -->
+                <!-- 13. ARTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -608,7 +602,7 @@
                     </div>
                 </div>
 
-                <!-- 14. ESPORTS 3 -->
+                <!-- 14. ESPORTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -646,7 +640,7 @@
                     </div>
                 </div>
 
-                <!-- 15. BUSINESS 3 -->
+                <!-- 15. BUSINESS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -684,7 +678,7 @@
                     </div>
                 </div>
 
-                <!-- 16. MUSIC 4 (Completing minimum 4 for Music) -->
+                <!-- 16. MUSIC -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -722,7 +716,7 @@
                     </div>
                 </div>
 
-                <!-- 17. TECH 4 (Completing minimum 4 for Tech) -->
+                <!-- 17. TECH -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -760,7 +754,7 @@
                     </div>
                 </div>
 
-                <!-- 18. ARTS 4 (Completing minimum 4 for Arts) -->
+                <!-- 18. ARTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -798,7 +792,7 @@
                     </div>
                 </div>
 
-                <!-- 19. ESPORTS 4 (Completing minimum 4 for Esports) -->
+                <!-- 19. ESPORTS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -836,7 +830,7 @@
                     </div>
                 </div>
 
-                <!-- 20. BUSINESS 4 (Completing minimum 4 for Business) -->
+                <!-- 20. BUSINESS -->
                 <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
                     <div>
                         <div class="relative h-52 overflow-hidden">
@@ -867,6 +861,386 @@
                         <div>
                             <span class="block text-[10px] text-gray-400 uppercase font-semibold">Delegate Pass</span>
                             <span class="text-lg font-extrabold text-white">BDT 2,000</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 21. MUSIC -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Chittagong Fest" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-purple-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-music mr-1"></i> Live Concert
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-purple-400 uppercase">APR</span>
+                                <span class="block text-base font-extrabold text-white">12</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-purple-400 mr-1"></i> 05:00 PM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-purple-400 mr-1"></i> Navy Convention Center, Chittagong</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition line-clamp-1">Port City Spring Music Fest</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">A grand musical evening featuring popular mainstream bands and solo artists from Chittagong and Dhaka.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Ticket Price</span>
+                            <span class="text-lg font-extrabold text-white">BDT 1,000</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 22. TECH -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Cloud Summit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-laptop-code mr-1"></i> Cloud Tech
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-indigo-400 uppercase">APR</span>
+                                <span class="block text-base font-extrabold text-white">19</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-indigo-400 mr-1"></i> 09:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i> Radisson Blu, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition line-clamp-1">Bangladesh Cloud & DevOps Conclave</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Deep dive into scalable cloud infrastructure, Kubernetes, and automated deployment pipelines for enterprise applications.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Ticket Price</span>
+                            <span class="text-lg font-extrabold text-white">BDT 1,200</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 23. ARTS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Pahela Baishakh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-amber-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-palette mr-1"></i> Heritage Fest
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-amber-400 uppercase">APR</span>
+                                <span class="block text-base font-extrabold text-white">14</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-amber-400 mr-1"></i> 08:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Ramna Botolomul, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition line-clamp-1">Noboborsho Mangal Shobhajatra & Cultural Gala</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">The traditional Bengali New Year celebration featuring colourful processions, pantha ilish sharing, and folk songs.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Entry Ticket</span>
+                            <span class="text-lg font-extrabold text-emerald-400">FREE</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Join <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 24. ESPORTS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80" alt="Esports Sylhet" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-pink-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-gamepad mr-1"></i> Regional LAN
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-pink-400 uppercase">APR</span>
+                                <span class="block text-base font-extrabold text-white">26</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-pink-400 mr-1"></i> 11:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-pink-400 mr-1"></i> Rose View Hotel, Sylhet</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-pink-300 transition line-clamp-1">Sylhet Gaming Open Championship</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Regional qualifiers for competitive football and shooter games open to all enthusiastic gamers in the Sylhet division.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Spectator Pass</span>
+                            <span class="text-lg font-extrabold text-white">BDT 150</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 25. BUSINESS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80" alt="Women Entrepreneurship" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-emerald-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-briefcase mr-1"></i> SME & Women Leaders
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-emerald-400 uppercase">MAY</span>
+                                <span class="block text-base font-extrabold text-white">03</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-emerald-400 mr-1"></i> 10:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i> Bangabandhu International Conference Center, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition line-clamp-1">Bangladesh Women Entrepreneurship & SME Fair</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Empowering local women-led small businesses with networking opportunities, financial literacy seminars, and showcase booths.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Entry Pass</span>
+                            <span class="text-lg font-extrabold text-emerald-400">FREE</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Register <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 26. MUSIC -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-purple-500/50 transition duration-300 flex flex-col justify-between" data-category="music">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Underground Music" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-purple-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-music mr-1"></i> Underground Rock
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-purple-400 uppercase">MAY</span>
+                                <span class="block text-base font-extrabold text-white">10</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-purple-400 mr-1"></i> 03:30 PM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-purple-400 mr-1"></i> Russian Cultural Center, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition line-clamp-1">Underground Metal Meltdown Vol. 4</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Heavy metal and alternative underground bands from the local scene crushing the stage with raw energy.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Ticket Price</span>
+                            <span class="text-lg font-extrabold text-white">BDT 500</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 27. TECH -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between" data-category="tech">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Mobile App Dev" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-laptop-code mr-1"></i> Mobile Dev
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-indigo-400 uppercase">MAY</span>
+                                <span class="block text-base font-extrabold text-white">17</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-indigo-400 mr-1"></i> 10:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i> Daffodil International University, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition line-clamp-1">Bangladesh Flutter & Mobile App Hackathon</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">A 12-hour coding marathon where mobile developers build creative apps addressing localized civic problems.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Participation</span>
+                            <span class="text-lg font-extrabold text-emerald-400">FREE</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Register <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 28. ARTS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300 flex flex-col justify-between" data-category="arts">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Drama Festival" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-amber-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-palette mr-1"></i> Theatre Fest
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-amber-400 uppercase">MAY</span>
+                                <span class="block text-base font-extrabold text-white">24</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-amber-400 mr-1"></i> 06:30 PM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Bangladesh Shilpakala Academy, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition line-clamp-1">Dhaka National Theatre & Drama Festival</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Engaging stage plays and theatrical performances highlighting historical milestones and social narratives.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Ticket Price</span>
+                            <span class="text-lg font-extrabold text-white">BDT 300</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 29. ESPORTS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-pink-500/50 transition duration-300 flex flex-col justify-between" data-category="esports">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80" alt="PC Bang LAN" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-pink-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-gamepad mr-1"></i> PC Gaming Cup
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-pink-400 uppercase">MAY</span>
+                                <span class="block text-base font-extrabold text-white">31</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-pink-400 mr-1"></i> 10:00 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-pink-400 mr-1"></i> Panthapath Gaming Lounge, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-pink-300 transition line-clamp-1">Counter-Strike 2 National Open LAN</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">High-intensity tactical shooter tournament featuring the country's best counter-strike clans competing live.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Spectator Pass</span>
+                            <span class="text-lg font-extrabold text-white">BDT 250</span>
+                        </div>
+                        <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                            Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 30. BUSINESS -->
+                <div class="event-card glass-card rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between" data-category="business">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80" alt="Digital Marketing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#161626] via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-emerald-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                <i class="fa-solid fa-briefcase mr-1"></i> Marketing Summit
+                            </span>
+                            <button onclick="toggleBookmark(this)" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <div class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
+                                <span class="block text-xs font-bold text-emerald-400 uppercase">JUN</span>
+                                <span class="block text-base font-extrabold text-white">07</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span><i class="fa-regular fa-clock text-emerald-400 mr-1"></i> 09:30 AM</span>
+                                <span>•</span>
+                                <span class="truncate"><i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i> Hotel InterContinental, Dhaka</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition line-clamp-1">Bangladesh Digital Marketing & Brand Growth Forum</h3>
+                            <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">Keynotes and panels on social media consumer behavior, influencer marketing dynamics, and brand strategy in Bangladesh.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase font-semibold">Delegate Pass</span>
+                            <span class="text-lg font-extrabold text-white">BDT 2,200</span>
                         </div>
                         <a href="#" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>

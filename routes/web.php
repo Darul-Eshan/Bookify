@@ -19,6 +19,7 @@ Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->n
 Route::get('/cart', function () {return view('frontend.cart');})->name('cart');
 Route::view('/offers', 'frontend.offers')->name('offers');
 Route::view('/support', 'frontend.support')->name('support');
+Route::get('/events/{id}', [App\Http\Controllers\HomeController::class, 'eventDetails'])->name('events.details');
 
 
 Route::view('/about', 'frontend.about')->name('about');

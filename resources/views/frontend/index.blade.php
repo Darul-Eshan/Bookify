@@ -2,73 +2,73 @@
 
 @section('section')
 @php
-    // Mock Data for Events
-    $categories = ['All', 'Music', 'Sports', 'Theater', 'Comedy'];
+    // Mock Data for Bangladeshi Relevant Events
+    $categories = ['All', 'Music', 'Tech', 'Cultural', 'Comedy'];
     
     $events = [
         [
-            'title' => 'Coldplay: Music of the Spheres',
-            'artist' => 'Coldplay',
-            'date' => 'Aug 15, 2026',
-            'location' => 'London, UK',
-            'price' => '$89',
+            'title' => 'Dhaka Rock Fest 2026',
+            'artist' => 'Nagar Baul, Artcell, Warfaze',
+            'date' => 'Nov 14, 2026',
+            'location' => 'Army Stadium, Dhaka',
+            'price' => 'BDT 1,200',
             'rating' => '4.9',
             'category' => 'Music',
             'featured' => true,
             'image' => 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
         ],
         [
-            'title' => 'NBA Finals 2026 — Game 7',
-            'artist' => 'Golden State Warriors vs. Boston Celtics',
-            'date' => 'Jul 20, 2026',
-            'location' => 'San Francisco, CA',
-            'price' => '$199',
+            'title' => 'Bangladesh Tech Expo & AI Conference',
+            'artist' => 'National Tech Leaders',
+            'date' => 'Dec 02, 2026',
+            'location' => 'BICC, Dhaka',
+            'price' => 'FREE',
             'rating' => '4.8',
-            'category' => 'Sports',
+            'category' => 'Tech',
             'featured' => true,
             'image' => 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80'
         ],
         [
-            'title' => 'Hamilton — The Musical',
-            'artist' => 'Original Broadway Cast',
-            'date' => 'Sep 3, 2026',
-            'location' => 'New York, NY',
-            'price' => '$149',
+            'title' => 'International Folk & Heritage Festival',
+            'artist' => 'Baul & Folk Artists',
+            'date' => 'Nov 28, 2026',
+            'location' => 'Shilpakala Academy, Dhaka',
+            'price' => 'BDT 500',
             'rating' => '4.9',
-            'category' => 'Theater',
+            'category' => 'Cultural',
             'featured' => false,
             'image' => 'https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=800&q=80'
         ],
         [
-            'title' => 'Taylor Swift: The Eras Tour',
-            'artist' => 'Taylor Swift',
-            'date' => 'Oct 12, 2026',
-            'location' => 'Los Angeles, CA',
-            'price' => '$129',
+            'title' => 'Coke Studio Bangla Live Concert',
+            'artist' => 'Various Artists',
+            'date' => 'Dec 20, 2026',
+            'location' => 'ICCB, Dhaka',
+            'price' => 'BDT 2,000',
             'rating' => '5.0',
             'category' => 'Music',
             'featured' => true,
             'image' => 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80'
         ],
         [
-            'title' => 'Dave Chappelle: Stand-Up Special',
-            'artist' => 'Dave Chappelle',
-            'date' => 'Aug 28, 2026',
-            'location' => 'New York, NY',
-            'price' => '$95',
+            'title' => 'Stand-Up Comedy Night: Dhaka Edition',
+            'artist' => 'Local Comedians',
+            'date' => 'Sep 15, 2026',
+            'location' => 'Gulshan Club, Dhaka',
+            'price' => 'BDT 800',
             'rating' => '4.7',
             'category' => 'Comedy',
             'featured' => false,
             'image' => 'https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=800&q=80'
         ],
         [
-            'title' => 'UFC 310: World Championship Night',
-            'artist' => 'Mixed Martial Arts',
-            'date' => 'Nov 5, 2026',
-            'location' => 'Las Vegas, NV',
-            'price' => '$175',
+            'title' => 'Sylhet Startup Summit 2026',
+            'artist' => 'Entrepreneurs & Investors',
+            'date' => 'Oct 10, 2026',
+            'location' => 'Sylhet',
+            'price' => 'BDT 300',
             'rating' => '4.8',
-            'category' => 'Sports',
+            'category' => 'Tech',
             'featured' => false,
             'image' => 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80'
         ],
@@ -91,18 +91,18 @@
             </span>
 
             <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-2">
-                Coldplay: Music of the Spheres
+                Dhaka Rock Fest 2026
             </h1>
-            <p class="text-purple-300 font-medium mb-4 text-lg">Coldplay</p>
+            <p class="text-purple-300 font-medium mb-4 text-lg">Nagar Baul, Artcell, Warfaze</p>
 
             <div class="flex flex-wrap items-center gap-6 text-sm text-gray-300 mb-8">
                 <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    Aug 15, 2026
+                    Nov 14, 2026
                 </span>
                 <span class="flex items-center gap-1.5">
                     <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    London, UK
+                    Army Stadium, Dhaka
                 </span>
                 <span class="flex items-center gap-1 text-yellow-400 font-semibold">
                     ★ 4.9
@@ -114,7 +114,7 @@
                     Get Tickets
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
-                <span class="text-sm text-gray-400">From <strong class="text-white text-lg font-bold ml-1">$89</strong></span>
+                <span class="text-sm text-gray-400">From <strong class="text-white text-lg font-bold ml-1">BDT 1,200</strong></span>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @foreach($events as $event)
+        @foreach($events as $index => $event)
         <div class="group bg-[#121222] border border-gray-800/80 rounded-2xl overflow-hidden hover:border-purple-500/40 transition duration-300 flex flex-col justify-between shadow-lg">
             <div class="relative h-48 overflow-hidden">
                 <img src="{{ $event['image'] }}" alt="{{ $event['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -187,13 +187,20 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between pt-4 border-t border-gray-800/60">
-                    <span class="text-xs text-gray-400">
-                        From <strong class="text-base text-white font-bold ml-1">{{ $event['price'] }}</strong>
-                    </span>
-                    <div class="flex items-center gap-1 text-xs font-semibold text-yellow-400">
-                        ★ <span>{{ $event['rating'] }}</span>
+                <div class="pt-4 border-t border-gray-800/60 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-400">
+                            Price <strong class="text-base text-white font-bold ml-1">{{ $event['price'] }}</strong>
+                        </span>
+                        <div class="flex items-center gap-1 text-xs font-semibold text-yellow-400">
+                            ★ <span>{{ $event['rating'] }}</span>
+                        </div>
                     </div>
+
+                    <!-- Get Ticket Button -->
+                    <a href="{{ route('events.details', $index + 1) }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-sm py-2.5 px-4 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center justify-center gap-1.5">
+                        Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
                 </div>
             </div>
         </div>

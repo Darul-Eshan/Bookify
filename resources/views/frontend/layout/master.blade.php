@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bookify - E-Ticket Booking</title>
 
-    <!-- Tailwind CSS Play CDN (ডিজাইন ও ব্যাকগ্রাউন্ড ঠিক রাখার জন্য) -->
+    <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Alpine.js (কার্ট ড্রপডাউন পপআপ কাজ করার জন্য) -->
+    <!-- Alpine.js-->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Google Font -->
