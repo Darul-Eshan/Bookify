@@ -110,18 +110,16 @@
         </a>
         
         <!-- Admin Categories Sub-options -->
-        <a href="{{ route('admin.admins.index') }}?role=Super Admin" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium text-gray-400 hover:text-purple-400 hover:bg-[#161628] transition pl-6">
+        <a href="{{ route('admin.admins.super') }}" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium {{ request()->routeIs('admin.admins.super') ? 'bg-purple-600/20 text-purple-400 font-semibold' : 'text-gray-400 hover:text-purple-400 hover:bg-[#161628]' }} transition pl-6">
             • Super Admin
         </a>
-        <a href="{{ route('admin.admins.index') }}?role=Editor" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium text-gray-400 hover:text-purple-400 hover:bg-[#161628] transition pl-6">
-            • Editor
-        </a>
-        <a href="{{ route('admin.admins.index') }}?role=Moderator" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium text-gray-400 hover:text-purple-400 hover:bg-[#161628] transition pl-6">
+       <a href="{{ route('admin.admins.editor') }}" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium {{ request()->routeIs('admin.editors.*') ? 'bg-purple-600/20 text-purple-400 font-semibold' : 'text-gray-400 hover:text-purple-400 hover:bg-[#161628]' }} transition pl-6">
+           • Editor
+       </a>
+        <a href="{{ route('admin.admins.moderator') }}" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium text-gray-400 hover:text-purple-400 hover:bg-[#161628] transition pl-6">
             • Moderator
         </a>
-        <a href="{{ route('admin.admins.index') }}?role=Support Admin" class="block px-3 py-1.5 rounded-lg text-[11px] font-medium text-gray-400 hover:text-purple-400 hover:bg-[#161628] transition pl-6">
-            • Support Admin
-        </a>
+
 
     </div>
 </div>

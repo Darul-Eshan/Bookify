@@ -11,6 +11,10 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\AdminManagementController;
+use App\Http\Controllers\Admin\EditorManagementController;
+use App\Http\Controllers\Admin\ModeratorManagementController;
+
+
 
 
 
@@ -84,10 +88,21 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
 
-
     Route::get('/admins-list', [AdminManagementController::class, 'index'])->name('admins.index');
-  
+    
+    Route::get('/super-admins', [AdminManagementController::class, 'superAdmins'])->name('admins.super');
+
+    Route::get('/editors', [EditorManagementController::class, 'index'])->name('admins.editor');
+    Route::post('/editors', [EditorManagementController::class, 'store'])->name('editors.store');
+    Route::delete('/editors/{id}', [EditorManagementController::class, 'destroy'])->name('editors.destroy');
+    Route::get('/editors/{id}/activity', [EditorManagementController::class, 'activityLogs'])->name('editors.activity');
 
 
+    Route::get('/moderators', [ModeratorManagementController::class, 'index'])->name('admins.moderator');
+    Route::post('/moderators', [ModeratorManagementController::class, 'store'])->name('moderators.store');
+    Route::put('/moderators/{id}', [ModeratorManagementController::class, 'update'])->name('moderators.update');
+    Route::delete('/moderators/{id}', [ModeratorManagementController::class, 'destroy'])->name('moderators.destroy');
 
+
+    
     });
