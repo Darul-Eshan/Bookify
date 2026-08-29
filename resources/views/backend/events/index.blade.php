@@ -35,7 +35,6 @@
                 <div class="mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div>
                         <h1 class="text-2xl font-bold text-white tracking-tight">Manage Events</h1>
-                        <p class="text-sm text-gray-400 mt-1">Full control over event listings, capacities, pricing, and schedules.</p>
                     </div>
                     
                     <!-- Action Buttons Group -->

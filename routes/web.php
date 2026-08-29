@@ -5,6 +5,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthConntroller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\AdminManagementController;
+
+
 
 Route::get('/login', [AuthConntroller::class, 'login'])->name('login');
 Route::post('/login', [AuthConntroller::class, 'loginStore'])->name('login.post');
@@ -34,13 +42,52 @@ Route::view('/terms', 'frontend.about.terms')->name('terms');
 Route::view('/press', 'frontend.about.press')->name('press');
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/events', [EventController::class, 'index'])->name('events');
+  
+    Route::get('/events', [AdminController::class, 'events'])->name('events');
     
     Route::post('/events/store', [AdminController::class, 'storeEvent'])->name('events.store');
-    Route::put('/events/update/{id}', [AdminController::class, 'updateEvent'])->name('events.update'); // অথবা আপনার কন্ট্রোলার অনুযায়ী
+    Route::put('/events/update/{id}', [AdminController::class, 'updateEvent'])->name('events.update'); 
     Route::delete('/events/delete/{id}', [AdminController::class, 'destroyEvent'])->name('events.delete');
     
-    Route::get('/event-organizers', [EventController::class, 'organizers'])->name('event.organizers');
+    Route::get('/event-organizers', [AdminController::class, 'organizers'])->name('event.organizers');
     Route::get('/event-schedules', [EventController::class, 'schedules'])->name('event.schedules');
-    Route::get('/event-venues', [EventController::class, 'venues'])->name('event.venues');
-});
+
+    // Add Organizer Page Route
+    Route::get('/organizers/create', function () {return view('backend.events.add-organizer');})->name('organizers.create');
+    Route::get('/event-organizers/{id}/details', [AdminController::class, 'organizerDetails'])->name('organizers.details');
+
+    Route::get('/event-schedules', [AdminController::class, 'schedules'])->name('event.schedules');
+    Route::put('/event-schedules/update/{id}', [AdminController::class, 'updateSchedule'])->name('schedules.update');
+    Route::delete('/event-schedules/delete/{id}', [AdminController::class, 'destroySchedule'])->name('schedules.delete');
+
+    // Admin Bookings Route
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings');
+    Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.delete');
+
+    // User List page
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    
+
+    Route::put('/users/settings/update', [UserController::class, 'updateSettings'])->name('users.settings.update');
+    Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
+
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+
+    Route::get('/coupons', [CouponController::class, 'index'])->name('coupons');
+    Route::post('/coupons/store', [CouponController::class, 'store'])->name('coupons.store');
+    Route::delete('/coupons/delete/{id}', [CouponController::class, 'destroy'])->name('coupons.delete');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+
+
+    Route::get('/admins-list', [AdminManagementController::class, 'index'])->name('admins.index');
+  
+
+
+
+    });
