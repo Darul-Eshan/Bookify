@@ -113,12 +113,15 @@
                     Apple
                 </button>
             </div>
-
-            <!-- Sign Up Link -->
-            <p class="text-center text-xs text-gray-400 mt-8">
-                Don't have an account? 
-                <a href="{{ route('register') }}" class="text-purple-400 hover:text-purple-300 font-semibold transition">Sign Up free</a>
-            </p>
+             <!-- Sign Up Link -->
+            <div class="text-center mt-6">
+                <p class="text-xs text-gray-400">
+                    Don't have an account? 
+                    <a href="{{ route('register') }}" class="ml-1.5 px-3.5 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 rounded-xl font-semibold transition inline-flex items-center gap-1 shadow-sm">
+                        Sign Up Free
+                    </a>
+                </p>
+            </div>
 
         </div>
     </div>
