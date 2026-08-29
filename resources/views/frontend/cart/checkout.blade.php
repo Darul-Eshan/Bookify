@@ -208,7 +208,7 @@
                 <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-purple-600/30 transition flex items-center justify-center gap-2">
                     Confirm & Complete Order <i class="fa-solid fa-lock text-xs"></i>
                 </button>
-                <a href="{{ route('cart.viewgit add .') }}" class="w-full bg-[#1a1a2e] hover:bg-[#22223b] text-gray-300 font-semibold py-3 px-4 rounded-xl border border-gray-800 transition flex items-center justify-center">
+                <a href="{{ route('checkout.view') }}" class="w-full bg-[#1a1a2e] hover:bg-[#22223b] text-gray-300 font-semibold py-3 px-4 rounded-xl border border-gray-800 transition flex items-center justify-center">
                     Back to Cart
                 </a>
             </div>

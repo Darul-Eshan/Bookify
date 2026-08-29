@@ -11,9 +11,9 @@ class HomeController extends Controller
         return view('frontend.index');
     }
 
-    public function events()
+   public function events()
     {
-        return view('frontend.events');
+    return view('frontend.event.events');
     }
 
 
@@ -59,7 +59,7 @@ class HomeController extends Controller
     ];
 
     if (!$id || !isset($events[$id])) {
-        $event = $events[1]; // অথবা abort(404);
+        $event = $events[1]; 
     } else {
         $event = $events[$id];
     }
