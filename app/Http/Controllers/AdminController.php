@@ -36,30 +36,40 @@ class AdminController extends Controller
     }
 
     // Store New Event (Modal Form Submit)
-    public function storeEvent(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'category' => 'required|string',
-            'date_time' => 'required|date',
-            'venue' => 'required|string',
-            'price' => 'required|numeric',
-            'capacity' => 'required|integer',
-            'image' => 'nullable|string',
-        ]);
+ public function storeEvent(Request $request)
+{
+    // ১. ফর্ম ভ্যালিডেশন
+    $request->validate([
+        'title'     => 'required|string|max:255',
+        'category'  => 'required|string',
+        'date_time' => 'required|date',
+        'venue'     => 'required|string',
+        'price'     => 'required|numeric',
+        'capacity'  => 'required|integer',
+        'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120', // সাইজ বাড়িয়ে 5MB করা হলো
+    ]);
 
-        Event::create([
-            'title' => $request->title,
-            'category' => $request->category,
-            'date_time' => $request->date_time,
-            'venue' => $request->venue,
-            'price' => $request->price,
-            'capacity' => $request->capacity,
-            'image' => $request->image ?? 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&auto=format&fit=crop&q=80',
-        ]);
+    $imagePath = null;
 
-        return redirect()->back()->with('success', 'Event created successfully!');
+    // ২. ফাইল আপলোড
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('events', 'public');
     }
+
+    // ৩. ডাটা সেভ
+    Event::create([
+        'title'     => $request->title,
+        'category'  => $request->category,
+        'date_time' => $request->date_time,
+        'venue'     => $request->venue,
+        'price'     => $request->price,
+        'capacity'  => $request->capacity,
+        'image'     => $imagePath,
+    ]);
+
+    // আগের পেজ বা সঠিক রুটে রিডাইরেক্ট
+    return redirect()->route('admin.events')->with('success', 'Event created successfully!');
+}
 
     // Delete Event
     public function destroyEvent($id)
@@ -170,5 +180,10 @@ class AdminController extends Controller
         $schedule->delete();
 
         return redirect()->back()->with('success', 'Schedule deleted successfully!');
+    }
+
+    public function createEvent()
+    {
+        return view('backend.events.create');
     }
 }

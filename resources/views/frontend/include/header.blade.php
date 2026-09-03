@@ -47,7 +47,7 @@
                     <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
                 </button>
 
-                <!-- Professional Large Popup Box (Cart Dropdown) -->
+                <!-- Cart Dropdown Popup -->
                 <div x-show="open" 
                      x-transition:enter="transition ease-out duration-200"
                      x-transition:enter-start="opacity-0 scale-95 translate-y-2"
@@ -69,7 +69,6 @@
 
                     <!-- Scrollable Items List -->
                     <div class="py-3 max-h-64 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-purple-600">
-                        <!-- Item 1 -->
                         <div class="flex items-center justify-between gap-3 bg-[#18182f] p-2.5 rounded-xl border border-gray-800/50">
                             <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&auto=format&fit=crop&q=80" alt="Event" class="w-14 h-14 object-cover rounded-lg">
                             <div class="flex-1 min-w-0">
@@ -81,7 +80,6 @@
                             </button>
                         </div>
 
-                        <!-- Item 2 -->
                         <div class="flex items-center justify-between gap-3 bg-[#18182f] p-2.5 rounded-xl border border-gray-800/50">
                             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80" alt="Event" class="w-14 h-14 object-cover rounded-lg">
                             <div class="flex-1 min-w-0">
@@ -149,7 +147,8 @@
 
                         <!-- Dropdown Menu Options -->
                         <div class="space-y-1">
-                            @if(Auth::user()->role === 'admin' || Auth::user()->email === 'admin@gmail.com')
+                            <!-- Admin Panel Access Check (Admin, Moderator, Executive, Super Admin) -->
+                            @if(in_array(Auth::user()->role, ['admin', 'moderator', 'executive', 'super_admin', 'super_executive']) || Auth::user()->email === 'admin@gmail.com')
                                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
                                     <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                                     Admin Dashboard
