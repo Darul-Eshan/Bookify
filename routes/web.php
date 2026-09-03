@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\ModeratorManagementController;
 Route::get('/login', [AuthConntroller::class, 'login'])->name('login');
 Route::post('/login', [AuthConntroller::class, 'loginStore'])->name('login.post');
 
-Route::get('/register', [AuthConntroller::class, 'register'])->name('register');
+Route::get('/register', [AuthConntroller::class, 'register'])->name('register1');
 Route::post('/register/store', [AuthConntroller::class, 'registerStore'])->name('register.store');
 
 Route::get('/admin/dashboard', function () { return view('backend.dashboard'); })->name('admin.dashboard');
@@ -44,6 +44,12 @@ Route::view('/careers', 'frontend.about.careers')->name('careers');
 Route::view('/help-centre', 'frontend.about.help-centre')->name('help.centre');
 Route::view('/terms', 'frontend.about.terms')->name('terms');
 Route::view('/press', 'frontend.about.press')->name('press');
+
+
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    
+    Route::post('/logout',[AuthConntroller::class, 'logout'])->name('logout');
+});
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
   

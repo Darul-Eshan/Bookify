@@ -53,7 +53,7 @@
                     @error('name') <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>
 
-                <!-- 2. Phone Number Field (Fixed name to phone_number) -->
+                <!-- 2. Phone Number Field -->
                 <div>
                     <label for="phone_number" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Phone Number</label>
                     <div class="relative">
@@ -89,7 +89,7 @@
                     @error('password') <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>
 
-                <!-- 5. Confirm Password Field (Added for Validation) -->
+                <!-- 5. Confirm Password Field -->
                 <div>
                     <label for="password_confirmation" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Confirm Password</label>
                     <div class="relative">
@@ -101,11 +101,14 @@
                 </div>
 
                 <!-- Terms Checkbox -->
-                <div class="flex items-center gap-2 pt-1">
-                    <input type="checkbox" id="terms" name="terms" required class="w-4 h-4 rounded border-gray-700 bg-[#161628] text-purple-600 focus:ring-purple-500 focus:ring-offset-0 cursor-pointer">
-                    <label for="terms" class="text-xs text-gray-400 cursor-pointer">
-                        I agree to the <a href="#" class="text-purple-400 hover:underline">Terms of Service</a> & <a href="#" class="text-purple-400 hover:underline">Privacy Policy</a>
-                    </label>
+                <div>
+                    <div class="flex items-center gap-2 pt-1">
+                        <input type="checkbox" id="terms" name="terms" value="1" required class="w-4 h-4 rounded border-gray-700 bg-[#161628] text-purple-600 focus:ring-purple-500 focus:ring-offset-0 cursor-pointer">
+                        <label for="terms" class="text-xs text-gray-400 cursor-pointer">
+                            I agree to the <a href="#" class="text-purple-400 hover:underline">Terms of Service</a> & <a href="#" class="text-purple-400 hover:underline">Privacy Policy</a>
+                        </label>
+                    </div>
+                    @error('terms') <span class="text-red-400 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>
 
                 <!-- Submit Button -->

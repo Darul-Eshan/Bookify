@@ -16,11 +16,11 @@
                 
                 <a href="{{ route('events') }}" class="{{ request()->routeIs('events') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">All Events</a>
 
-               <!-- Offers & Promos -->
-<a href="{{ route('offers') }}" class="{{ request()->routeIs('offers') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Offers</a>
+                <!-- Offers & Promos -->
+                <a href="{{ route('offers') }}" class="{{ request()->routeIs('offers') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Offers</a>
 
-<!-- Support / Contact -->
-<a href="{{ route('support') }}" class="{{ request()->routeIs('support') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Support</a>
+                <!-- Support / Contact -->
+                <a href="{{ route('support') }}" class="{{ request()->routeIs('support') ? 'text-purple-400 font-semibold px-3 py-1.5 bg-[#232338] rounded-lg' : 'text-gray-400 hover:text-white px-3 py-1.5 transition' }}">Support</a>
             </div>
         </div>
 
@@ -34,12 +34,12 @@
             </div>
         </div>
 
-        <!-- Right: Cart & Sign In Actions -->
+        <!-- Right: Cart & User Auth Actions -->
         <div class="flex items-center gap-4">
             
             <!-- Cart Dropdown Menu -->
             <div class="relative" x-data="{ open: false }">
-                <!-- Cart Button (Click to Toggle) -->
+                <!-- Cart Button -->
                 <button @click="open = !open" @click.away="open = false" class="relative text-gray-300 hover:text-white p-2.5 rounded-xl bg-[#161626] border border-gray-800 transition flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     
@@ -47,7 +47,7 @@
                     <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
                 </button>
 
-                <!-- Professional Large Popup Box (Dropdown) -->
+                <!-- Professional Large Popup Box (Cart Dropdown) -->
                 <div x-show="open" 
                      x-transition:enter="transition ease-out duration-200"
                      x-transition:enter-start="opacity-0 scale-95 translate-y-2"
@@ -113,10 +113,77 @@
                 </div>
             </div>
 
-            <!-- Sign In Button -->
-            <a href="{{ route('login') }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-purple-600/20 hover:opacity-95 transition">
-                Sign In
-            </a>
+            <!-- Auth Condition Check -->
+            @auth
+                <!-- Profile Dropdown Menu -->
+                <div class="relative" x-data="{ profileOpen: false }">
+                    <!-- Profile Button -->
+                    <button @click="profileOpen = !profileOpen" @click.away="profileOpen = false" class="flex items-center gap-2 p-1.5 pr-3 rounded-xl bg-[#161626] border border-gray-800 hover:border-purple-500/50 transition">
+                        @if(Auth::user()->profile_picture)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="{{ Auth::user()->name }}" class="w-8 h-8 rounded-lg object-cover">
+                        @else
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-bold text-xs shadow-md">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </div>
+                        @endif
+                        <span class="text-xs font-semibold text-gray-200 hidden md:inline-block truncate max-w-[100px]">{{ Auth::user()->name }}</span>
+                        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <!-- Profile Dropdown Card -->
+                    <div x-show="profileOpen" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+                         x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 scale-95 translate-y-2"
+                         style="display: none;"
+                         class="absolute right-0 mt-3 w-56 bg-[#121222] border border-gray-800/80 rounded-2xl shadow-2xl p-3 z-50 text-white backdrop-blur-xl">
+                        
+                        <!-- User Basic Info Header -->
+                        <div class="px-3 py-2 border-b border-gray-800/80 mb-1.5">
+                            <p class="text-xs font-bold text-white truncate">{{ Auth::user()->name }}</p>
+                            <p class="text-[11px] text-gray-400 truncate mt-0.5">{{ Auth::user()->email }}</p>
+                        </div>
+
+                        <!-- Dropdown Menu Options -->
+                        <div class="space-y-1">
+                            @if(Auth::user()->role === 'admin' || Auth::user()->email === 'admin@gmail.com')
+                                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
+                                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                                    Admin Dashboard
+                                </a>
+                            @endif
+
+                            <a href="#" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
+                                <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                My Profile
+                            </a>
+
+                            <a href="#" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
+                                <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
+                                My Tickets
+                            </a>
+
+                            <!-- Logout Action Form -->
+                            <form method="POST" action="{{ route('user.logout') }}" class="pt-1 border-t border-gray-800/60">
+                                @csrf
+                                <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                    Sign Out
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <!-- Guest State: Sign In Button -->
+                <a href="{{ route('login') }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-purple-600/20 hover:opacity-95 transition">
+                    Sign In
+                </a>
+            @endauth
+
         </div>
     </div>
 </nav>

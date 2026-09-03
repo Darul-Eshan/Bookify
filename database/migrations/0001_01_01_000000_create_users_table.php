@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('address')->nullable();
             $table->integer('birth_date')->nullable();
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
 
