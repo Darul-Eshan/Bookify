@@ -92,13 +92,16 @@ Route::middleware(['guest'])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth'])
-    ->prefix('user')
-    ->name('user.')
-    ->group(function () {
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
 
-        Route::post('/logout', [AuthConntroller::class, 'logout'])
-            ->name('logout');
+        Route::post('/logout', [AuthConntroller::class, 'logout'])->name('logout');
+        Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+
+        Route::put('/profile/update', [HomeController::class, 'updateProfile'])->name('profile.update');
+        Route::put('/profile/password', [HomeController::class, 'updatePassword'])->name('password.update');
+        Route::get('/tickets', [HomeController::class, 'myTickets'])->name('tickets');
+      
+        Route::get('/transaction-history', function () { return view('frontend.user.transaction-history');})->name('transaction.history');
 
     });
 
@@ -126,6 +129,15 @@ Route::middleware(['auth', 'can:admin-access'])
             return view('backend.dashboard');
 
         })->name('dashboard');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Admin Dashboard & Profile
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/dashboard', function () {return view('backend.dashboard');})->name('dashboard');
+        Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
 
 
         /*
@@ -184,13 +196,13 @@ Route::middleware(['auth', 'can:admin-access'])
             )->name('events.store');
 
 
-            // ⭐ UPDATED: Separate Event Edit Page
+            // UPDATED: Separate Event Edit Page
             Route::get('/events/edit/{id}',
                 [AdminController::class, 'editEvent']
             )->name('events.edit');
 
 
-            // ⭐ UPDATED: Update Event
+            // UPDATED: Update Event
             Route::put('/events/update/{id}',
                 [AdminController::class, 'updateEvent']
             )->name('events.update');

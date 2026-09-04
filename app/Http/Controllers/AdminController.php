@@ -285,4 +285,10 @@ class AdminController extends Controller
             ->back()
             ->with('success', 'Schedule deleted successfully!');
     }
+
+    public function profile()
+{
+    $admin = auth()->user();
+    return view('backend.admins.profile', compact('admin')); 
+}
 }

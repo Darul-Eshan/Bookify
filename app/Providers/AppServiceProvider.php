@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Storage;
+use Spatie\Dropbox\Client;
+use Spatie\FlysystemDropbox\DropboxAdapter;
+use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
@@ -40,5 +44,11 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('is-super-admin', function (User $user) {
             return $user->role === 'super_admin';
         });
+
+        Storage::extend('dropbox', function ($app, $config) {
+        $adapter = new DropboxAdapter(new Client($config['authorization_token']));
+        return new Filesystem($adapter);
+        });
+
     }
 }

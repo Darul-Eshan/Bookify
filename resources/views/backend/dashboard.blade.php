@@ -5,7 +5,7 @@
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
             <h1 class="text-2xl font-bold text-white tracking-tight">Dashboard Overview</h1>
-            <p class="text-sm text-gray-400 mt-1">Here is what's happening with your platform today.</p>
+          
         </div>
         <div class="flex items-center gap-3">
             <span class="px-3 py-1.5 bg-[#161628] border border-gray-800 rounded-xl text-xs text-gray-300 font-medium">

@@ -117,11 +117,19 @@
                 </button>
             </form>
 
+          
+
             <!-- Already Have An Account Link -->
-            <p class="text-center text-xs text-gray-400 mt-6">
+                <div class="text-center mt-6">
+                    <p class="text-xs text-gray-400">
                 Already have an account? 
-                <a href="{{ route('login') }}" class="text-purple-400 hover:text-purple-300 font-semibold transition">Sign In</a>
-            </p>
+                        <a href="{{ route('register1') }}" class="ml-1.5 px-3.5 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 rounded-xl font-semibold transition inline-flex items-center gap-1 shadow-sm">
+                           Sign In
+                        </a>
+                    </p>
+                </div>
+            
+            
 
         </div>
     </div>

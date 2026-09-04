@@ -19,14 +19,19 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
         </button>
 
-        <div class="flex items-center gap-3 pl-3 border-l border-gray-800">
+        <!-- Profile Link Added Here -->
+        <a href="{{ route('admin.profile') }}" class="flex items-center gap-3 pl-3 border-l border-gray-800 group hover:opacity-90 transition">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-600/30">
-                A
+                @if(!empty(Auth::user()->profile_picture))
+                    <img src="{{ asset(Auth::user()->profile_picture) }}" alt="{{ Auth::user()->name }}" class="w-full h-full rounded-xl object-cover">
+                @else
+                    {{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}
+                @endif
             </div>
             <div class="hidden sm:block text-left">
-                <h4 class="text-sm font-semibold text-white leading-tight">Admin User</h4>
+                <h4 class="text-sm font-semibold text-white leading-tight group-hover:text-purple-400 transition">{{ Auth::user()->name ?? 'Admin User' }}</h4>
                 <span class="text-xs text-purple-400 font-medium">Administrator</span>
             </div>
-        </div>
+        </a>
     </div>
 </header>
