@@ -16,15 +16,6 @@
 
                 <div class="text-center max-w-3xl mx-auto mb-10">
 
-                    <span
-                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-medium mb-4">
-
-                        <i class="fa-solid fa-sparkles text-purple-400"></i>
-
-                        Trending Events Across Bangladesh
-
-                    </span>
-
                     <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
 
                         Discover & Book
@@ -32,17 +23,11 @@
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-purple-500">
 
-                            Bangladeshi Events
+                            Events in Bangladesh 
 
                         </span>
 
                     </h1>
-
-                    <p class="mt-4 text-gray-400 text-base sm:text-lg">
-
-                        Concerts in Dhaka, tech summits, cultural fests, esports tournaments & business expos.
-
-                    </p>
 
                 </div>
 
@@ -143,20 +128,46 @@
 
                         </div>
 
+ <div class="md:col-span-2 relative">
 
-                        <!-- Filter Button -->
-                        <div class="md:col-span-2">
+                            <i
+                                class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            </i>
 
-                            <button
-                                class="w-full h-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-purple-600/30 transition flex items-center justify-center gap-2 text-sm">
+                            <select
+                                id="dateSelect"
+                                class="w-full bg-[#11111e] text-gray-100 pl-11 pr-8 py-3 rounded-xl border border-gray-800 focus:outline-none focus:border-purple-500 transition text-sm appearance-none cursor-pointer">
 
-                                <i class="fa-solid fa-sliders"></i>
+                                <option value="upcoming">
+                                    Upcoming First
+                                </option>
 
-                                Filter
+                                <option value="popular">
+                                        Most Popular
+                                    </option>
 
-                            </button>
+                                <option value="low">
+                                    Price: Low to High
+                                </option>
+
+                                <option value="high">
+                                    Price: High to Low
+                                </option>
+
+                            </select>
+
+                            <i
+                                class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
+                            </i>
 
                         </div>
+
+
+ <div class="flex items-center gap-3">
+
+                    
+
+                </div>
 
                     </div>
 
@@ -276,34 +287,7 @@
                 </div>
 
 
-                <div class="flex items-center gap-3">
-
-                    <span class="text-xs text-gray-400 font-medium">
-                        Sort By:
-                    </span>
-
-                    <select
-                        class="bg-[#161626] text-gray-300 text-xs font-medium px-3 py-2 rounded-lg border border-gray-800 focus:outline-none focus:border-purple-500 cursor-pointer">
-
-                        <option value="upcoming">
-                            Upcoming First
-                        </option>
-
-                        <option value="popular">
-                            Most Popular
-                        </option>
-
-                        <option value="price-low">
-                            Price: Low to High
-                        </option>
-
-                        <option value="price-high">
-                            Price: High to Low
-                        </option>
-
-                    </select>
-
-                </div>
+               
 
             </div>
 
