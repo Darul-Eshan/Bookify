@@ -322,6 +322,7 @@
                                 </span>
 
 
+<<<<<<< HEAD
                                 <!-- Bookmark -->
                                 <button
                                     type="button"
@@ -333,6 +334,8 @@
                                 </button>
 
 
+=======
+>>>>>>> cad6cb6 (solved some minor desgin issue)
                                 <!-- Date -->
                                 @if($event->date_time)
 
@@ -426,7 +429,7 @@
 
                         <!-- Card Footer -->
                         <div
-                            class="p-5 pt-0 border-t border-gray-800/60 mt-2 flex items-center justify-between">
+                            class="p-5 pt-2 border-t border-gray-800/60 mt-2 flex items-center justify-between">
 
 
                             <!-- Price -->
@@ -466,7 +469,7 @@
                             <!-- Get Ticket -->
                             <a
                                 href="{{ route('events.details', $event->id) }}"
-                                class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
+                                class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-ls px-9 py-3 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
 
                                 Get Ticket
 

@@ -5,7 +5,6 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
             <h1 class="text-2xl font-bold text-white tracking-tight">Event Schedule</h1>
-            <p class="text-sm text-gray-400 mt-1">Timeline and session schedules for upcoming events.</p>
         </div>
         <button class="px-4 py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-sm font-semibold shadow-lg shadow-purple-600/30 transition">
             + Add Schedule Slot

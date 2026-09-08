@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\EditorManagementController;
 use App\Http\Controllers\Admin\ModeratorManagementController;
+use App\Http\Controllers\WishlistController;
 
 
 /*
@@ -31,13 +32,9 @@ Route::get('/cart', function () {
     return view('frontend.cart.cart');
 })->name('cart');
 
-Route::get('/viewcart', function () {
-    return view('frontend.cart.cart');
-})->name('cart.view');
+Route::get('/viewcart', function () {return view('frontend.cart.cart');})->name('cart.view');
 
-Route::get('/checkout', function () {
-    return view('frontend.cart.checkout');
-})->name('checkout.view');
+Route::get('/checkout', function () {return view('frontend.cart.checkout');})->name('checkout.view');
 
 
 /*

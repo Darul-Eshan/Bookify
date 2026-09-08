@@ -13,7 +13,11 @@ class Event extends Model
     protected $fillable = [
         'title',
         'category',
+<<<<<<< HEAD
         'category_id',
+=======
+        'description',
+>>>>>>> cad6cb6 (solved some minor desgin issue)
         'date_time',
         'venue',
         'price',
@@ -27,22 +31,24 @@ class Event extends Model
         'capacity'  => 'integer',
     ];
 
-    /**
-     * ইমেজের সঠিক URL তৈরি করার এক্সেসর
-     */
+    
     public function getImageUrlAttribute()
     {
         if ($this->image) {
-            // যদি আগে থেকেই পূর্ণাঙ্গ URL থাকে
+         
             if (filter_var($this->image, FILTER_VALIDATE_URL)) {
                 return $this->image;
             }
+<<<<<<< HEAD
 
             // যদি লোকাল ফাইল পাথ হয়
+=======
+       
+>>>>>>> cad6cb6 (solved some minor desgin issue)
             return asset('storage/' . $this->image);
         }
 
-        // ডিফল্ট ইমেজ
+      
         return 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&auto=format&fit=crop&q=80';
     }
 

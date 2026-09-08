@@ -44,15 +44,13 @@
                             Manage Events
                         </h1>
 
-                        <p class="text-sm text-gray-500 mt-1">
-                            Manage, edit and delete your events
-                        </p>
 
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center gap-3">
 
+<<<<<<< HEAD
                         <!-- Refresh -->
                         <button onclick="window.location.reload()"
                             class="px-3.5 py-2.5 bg-[#18182f] hover:bg-gray-800 text-gray-300 font-semibold text-xs rounded-xl border border-gray-800 transition flex items-center gap-2"
@@ -91,6 +89,8 @@
                             Export CSV
 
                         </a>
+=======
+>>>>>>> cad6cb6 (solved some minor desgin issue)
 
                         <!-- Create Event -->
                         <a href="{{ route('admin.events.create') }}"

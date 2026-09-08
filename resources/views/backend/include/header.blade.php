@@ -20,7 +20,7 @@
         </button>
 
         <!-- Profile Link Added Here -->
-        <a href="{{ route('admin.profile') }}" class="flex items-center gap-3 pl-3 border-l border-gray-800 group hover:opacity-90 transition">
+        <a href="{{ route('admin.profile') }}"  class="flex items-center gap-3 pl-3 border-l border-gray-800 group hover:opacity-90 transition">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-600/30">
                 @if(!empty(Auth::user()->profile_picture))
                     <img src="{{ asset(Auth::user()->profile_picture) }}" alt="{{ Auth::user()->name }}" class="w-full h-full rounded-xl object-cover">

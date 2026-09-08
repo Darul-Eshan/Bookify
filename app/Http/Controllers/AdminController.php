@@ -57,7 +57,12 @@ class AdminController extends Controller
     {
         $request->validate([
             'title'       => 'required|string|max:255',
+<<<<<<< HEAD
             'category_id' => 'required|exists:categories,id',
+=======
+            'category'    => 'required|string',
+            'description' => 'nullable|string', 
+>>>>>>> cad6cb6 (solved some minor desgin issue)
             'date_time'   => 'required|date',
             'venue'       => 'required|string',
             'price'       => 'required|numeric',
@@ -78,8 +83,13 @@ class AdminController extends Controller
         // Save Event
         Event::create([
             'title'       => $request->title,
+<<<<<<< HEAD
             'category'    => $category->name,
             'category_id' => $category->id,
+=======
+            'category'    => $request->category,
+            'description' => $request->description, 
+>>>>>>> cad6cb6 (solved some minor desgin issue)
             'date_time'   => $request->date_time,
             'venue'       => $request->venue,
             'price'       => $request->price,
@@ -92,7 +102,12 @@ class AdminController extends Controller
             ->with('success', 'Event created successfully!');
     }
 
+<<<<<<< HEAD
     // Event Edit Page
+=======
+
+    // Separate Event Edit Page
+>>>>>>> cad6cb6 (solved some minor desgin issue)
     public function editEvent($id)
     {
         $event = Event::findOrFail($id);
@@ -102,12 +117,22 @@ class AdminController extends Controller
         return view('backend.events.edit', compact('event', 'categories'));
     }
 
+<<<<<<< HEAD
     // Update Event + Image
+=======
+
+    // Update Event + Image + Description
+>>>>>>> cad6cb6 (solved some minor desgin issue)
     public function updateEvent(Request $request, $id)
     {
         $request->validate([
             'title'       => 'required|string|max:255',
+<<<<<<< HEAD
             'category_id' => 'required|exists:categories,id',
+=======
+            'category'    => 'required|string',
+            'description' => 'nullable|string', 
+>>>>>>> cad6cb6 (solved some minor desgin issue)
             'date_time'   => 'required|date',
             'venue'       => 'required|string',
             'price'       => 'required|numeric',
@@ -117,9 +142,12 @@ class AdminController extends Controller
 
         $event = Event::findOrFail($id);
 
+<<<<<<< HEAD
         // Remove Existing Image
+=======
+        // If user selected "Remove Image"
+>>>>>>> cad6cb6 (solved some minor desgin issue)
         if ($request->remove_image == '1') {
-
             if (
                 $event->image &&
                 Storage::disk('public')->exists($event->image)
@@ -132,8 +160,6 @@ class AdminController extends Controller
 
         // Upload New Image
         if ($request->hasFile('image')) {
-
-            // Delete old image first
             if (
                 $event->image &&
                 Storage::disk('public')->exists($event->image)
@@ -141,11 +167,10 @@ class AdminController extends Controller
                 Storage::disk('public')->delete($event->image);
             }
 
-            // Store new image
-            $event->image = $request->file('image')
-                ->store('events', 'public');
+            $event->image = $request->file('image')->store('events', 'public');
         }
 
+<<<<<<< HEAD
         // Get selected category
         $category = Category::findOrFail($request->category_id);
 
@@ -153,6 +178,12 @@ class AdminController extends Controller
         $event->title       = $request->title;
         $event->category    = $category->name;
         $event->category_id = $category->id;
+=======
+        // Update Event Information
+        $event->title       = $request->title;
+        $event->category    = $request->category;
+        $event->description = $request->description; 
+>>>>>>> cad6cb6 (solved some minor desgin issue)
         $event->date_time   = $request->date_time;
         $event->venue       = $request->venue;
         $event->price       = $request->price;
@@ -160,11 +191,13 @@ class AdminController extends Controller
 
         $event->save();
 
-        return redirect()
-            ->route('admin.events')
-            ->with('success', 'Event updated successfully!');
+        return redirect()->route('admin.events')->with('success', 'Event updated successfully!');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cad6cb6 (solved some minor desgin issue)
     // Delete Event + Event Image
     public function destroyEvent($id)
     {
@@ -181,9 +214,7 @@ class AdminController extends Controller
         // Delete event from database
         $event->delete();
 
-        return redirect()
-            ->route('admin.events')
-            ->with('success', 'Event deleted successfully!');
+        return redirect()->route('admin.events')->with('success', 'Event deleted successfully!');
     }
 
     // Event Organizers List Page
@@ -278,7 +309,11 @@ class AdminController extends Controller
     public function profile()
     {
         $admin = auth()->user();
+<<<<<<< HEAD
 
         return view('backend.admins.profile', compact('admin'));
+=======
+        return view('backend.admins.profile', compact('admin')); 
+>>>>>>> cad6cb6 (solved some minor desgin issue)
     }
 }

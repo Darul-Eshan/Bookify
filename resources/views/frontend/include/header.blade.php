@@ -34,8 +34,17 @@
             </div>
         </div>
 
-        <!-- Right: Cart & User Auth Actions -->
+        <!-- Right: Wishlist, Cart & User Auth Actions -->
         <div class="flex items-center gap-4">
+
+            <!-- Wishlist Button / Icon -->
+            <a href="#" class="relative text-gray-300 hover:text-white p-2.5 rounded-xl bg-[#161626] border border-gray-800 transition flex items-center justify-center" title="Wishlist">
+                <svg class="w-5 h-5 text-gray-300 hover:text-purple-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+                <!-- Wishlist Item Count Badge -->
+                <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+            </a>
             
             <!-- Cart Dropdown Menu -->
             <div class="relative" x-data="{ open: false }">
@@ -76,7 +85,7 @@
                                 <p class="text-[11px] text-gray-400">Qty: 1 x <span class="text-purple-400 font-semibold">৳1,200</span></p>
                             </div>
                             <button class="text-gray-400 hover:text-red-400 p-1.5 transition">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 2 0 00-2-2h-4a1 2 0 00-2 2v3m4 0H6m6 0h6"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3m4 0H6m6 0h6"></path></svg>
                             </button>
                         </div>
 
@@ -87,7 +96,7 @@
                                 <p class="text-[11px] text-gray-400">Qty: 1 x <span class="text-purple-400 font-semibold">৳2,500</span></p>
                             </div>
                             <button class="text-gray-400 hover:text-red-400 p-1.5 transition">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 2 0 00-2-2h-4a1 2 0 00-2 2v3m4 0H6m6 0h6"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3m4 0H6m6 0h6"></path></svg>
                             </button>
                         </div>
                     </div>
@@ -149,7 +158,7 @@
                         <div class="space-y-1">
                             <!-- Admin Panel Access Check -->
                             @if(in_array(Auth::user()->role, ['admin', 'moderator', 'executive', 'super_admin', 'super_executive']) || Auth::user()->email === 'admin@gmail.com')
-                                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
+                                <a href="{{ route('admin.dashboard') }}" target="_blank" class="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white hover:bg-[#1c1c34] rounded-xl transition">
                                     <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                                     Admin Dashboard
                                 </a>
