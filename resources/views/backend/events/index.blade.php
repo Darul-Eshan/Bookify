@@ -1,4 +1,3 @@
-```blade
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,7 +125,7 @@
                             Total Events
                         </p>
 
-                        <h3 class="text-2xl font-bold text-white mt-1">
+                        <h3 id="totalEventsCount" class="text-2xl font-bold text-white mt-1">
                             {{ isset($events) ? count($events) : 0 }}
                         </h3>
 
@@ -160,7 +159,7 @@
                             Upcoming
                         </p>
 
-                        <h3 class="text-2xl font-bold text-white mt-1">
+                        <h3 id="upcomingEventsCount" class="text-2xl font-bold text-white mt-1">
                             {{ isset($events) ? count($events) : 0 }}
                         </h3>
 
@@ -201,32 +200,33 @@
 
                         <div class="flex items-center gap-3 w-full sm:w-auto">
 
-                            <input type="text"
+                            <!-- Search -->
+                            <input
+                                id="eventSearch"
+                                type="text"
                                 placeholder="Search event title or venue..."
                                 class="w-full sm:w-64 bg-[#18182f] text-xs text-gray-200 border border-gray-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-purple-500 placeholder-gray-500 transition">
 
+                            <!-- Category Filter -->
                             <select
+                                id="categoryFilter"
                                 class="bg-[#18182f] text-xs text-gray-200 border border-gray-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-purple-500 transition">
 
                                 <option value="">
                                     All Categories
                                 </option>
 
-                                <option value="concert">
-                                    Concert
-                                </option>
+                                @foreach($categories as $category)
 
-                                <option value="music">
-                                    Music
-                                </option>
+                                    @if($category->status)
 
-                                <option value="tech">
-                                    Tech Summit
-                                </option>
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </option>
 
-                                <option value="sports">
-                                    Sports
-                                </option>
+                                    @endif
+
+                                @endforeach
 
                             </select>
 
@@ -277,11 +277,14 @@
                             </thead>
 
                             <!-- Table Body -->
-                            <tbody class="divide-y divide-gray-800">
+                            <tbody id="eventsTableBody" class="divide-y divide-gray-800">
 
                                 @forelse($events as $event)
 
-                                    <tr class="hover:bg-[#18182f]/50 transition">
+                                    <tr
+                                        class="event-row hover:bg-[#18182f]/50 transition"
+                                        data-category="{{ $event->category_id ?? '' }}"
+                                        data-search="{{ strtolower($event->title . ' ' . $event->venue) }}">
 
                                         <!-- Event Details -->
                                         <td class="p-3">
@@ -438,7 +441,7 @@
                                                             <path stroke-linecap="round"
                                                                 stroke-linejoin="round"
                                                                 stroke-width="2"
-                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 2 0 00-2-2h-4a2 2 0 00-2 2v3m4 0h6">
+                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-2-2h-4a2 2 0 00-2 2v3m4 0h6">
                                                             </path>
 
                                                         </svg>
@@ -457,7 +460,7 @@
 
                                 @empty
 
-                                    <tr>
+                                    <tr id="noEventsRow">
 
                                         <td colspan="7"
                                             class="p-8 text-center text-gray-400 text-sm">
@@ -503,6 +506,33 @@
 
                     </div>
 
+                    <!-- No Filter Result -->
+                    <div id="noFilterResults"
+                        class="hidden p-8 text-center text-gray-400 text-sm">
+
+                        <div class="flex flex-col items-center justify-center space-y-3">
+
+                            <svg class="w-10 h-10 text-gray-600"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
+
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M21 21l-4.35-4.35m2.1-5.4a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z">
+                                </path>
+
+                            </svg>
+
+                            <p>
+                                No matching events found.
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </main>
@@ -514,7 +544,67 @@
 
     </div>
 
+    <!-- Search & Category Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const searchInput = document.getElementById('eventSearch');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const eventRows = document.querySelectorAll('.event-row');
+            const noFilterResults = document.getElementById('noFilterResults');
+
+            function filterEvents() {
+
+                const searchValue = searchInput.value.toLowerCase().trim();
+                const selectedCategory = categoryFilter.value;
+
+                let visibleCount = 0;
+
+                eventRows.forEach(function (row) {
+
+                    const rowCategory = row.dataset.category || '';
+                    const rowSearch = row.dataset.search || '';
+
+                    const categoryMatch =
+                        selectedCategory === '' ||
+                        rowCategory === selectedCategory;
+
+                    const searchMatch =
+                        searchValue === '' ||
+                        rowSearch.includes(searchValue);
+
+                    if (categoryMatch && searchMatch) {
+
+                        row.style.display = '';
+
+                        visibleCount++;
+
+                    } else {
+
+                        row.style.display = 'none';
+
+                    }
+
+                });
+
+                if (eventRows.length > 0 && visibleCount === 0) {
+
+                    noFilterResults.classList.remove('hidden');
+
+                } else {
+
+                    noFilterResults.classList.add('hidden');
+
+                }
+            }
+
+            searchInput.addEventListener('input', filterEvents);
+
+            categoryFilter.addEventListener('change', filterEvents);
+
+        });
+    </script>
+
 </body>
 
 </html>
-```

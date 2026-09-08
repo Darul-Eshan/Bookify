@@ -33,9 +33,15 @@ class AdminController extends Controller
     // Manage Events Page
     public function events()
     {
-        $events = Event::with('categoryRelation')->latest()->get();
+        // Get all events with their related categories
+        $events = Event::with('categoryRelation')
+            ->latest()
+            ->get();
 
-        return view('backend.events.index', compact('events'));
+        // Get all categories created from Admin Category management
+        $categories = Category::latest()->get();
+
+        return view('backend.events.index', compact('events', 'categories'));
     }
 
     // Create Event Page
