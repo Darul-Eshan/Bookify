@@ -23,7 +23,7 @@
                         <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-purple-500">
 
-                            Events in Bangladesh 
+                            Events in Bangladesh
 
                         </span>
 
@@ -128,14 +128,16 @@
 
                         </div>
 
- <div class="md:col-span-2 relative">
+
+                        <!-- Sort -->
+                        <div class="md:col-span-2 relative">
 
                             <i
-                                class="fa-solid fa-calendar-days absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                class="fa-solid fa-arrow-down-wide-short absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                             </i>
 
                             <select
-                                id="dateSelect"
+                                id="sortSelect"
                                 class="w-full bg-[#11111e] text-gray-100 pl-11 pr-8 py-3 rounded-xl border border-gray-800 focus:outline-none focus:border-purple-500 transition text-sm appearance-none cursor-pointer">
 
                                 <option value="upcoming">
@@ -143,8 +145,8 @@
                                 </option>
 
                                 <option value="popular">
-                                        Most Popular
-                                    </option>
+                                    Most Popular
+                                </option>
 
                                 <option value="low">
                                     Price: Low to High
@@ -161,13 +163,6 @@
                             </i>
 
                         </div>
-
-
- <div class="flex items-center gap-3">
-
-                    
-
-                </div>
 
                     </div>
 
@@ -191,6 +186,7 @@
 
                     <!-- All Events -->
                     <button
+                        type="button"
                         onclick="filterCategory('all', this)"
                         class="category-btn active px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2.5 whitespace-nowrap bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/20">
 
@@ -201,64 +197,21 @@
                     </button>
 
 
-                    <!-- Music -->
-                    <button
-                        onclick="filterCategory('music', this)"
-                        class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
+                    <!-- Dynamic Categories -->
+                    @foreach($categories as $category)
 
-                        <i class="fa-solid fa-music text-purple-400"></i>
+                        <button
+                            type="button"
+                            onclick="filterCategory('{{ $category->id }}', this)"
+                            class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
 
-                        Rock & Concerts
+                            <i class="fa-solid fa-layer-group text-purple-400"></i>
 
-                    </button>
+                            {{ $category->name }}
 
+                        </button>
 
-                    <!-- Tech -->
-                    <button
-                        onclick="filterCategory('tech', this)"
-                        class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
-
-                        <i class="fa-solid fa-laptop-code text-indigo-400"></i>
-
-                        Tech Summits
-
-                    </button>
-
-
-                    <!-- Esports -->
-                    <button
-                        onclick="filterCategory('esports', this)"
-                        class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
-
-                        <i class="fa-solid fa-gamepad text-pink-400"></i>
-
-                        Gaming & Esports
-
-                    </button>
-
-
-                    <!-- Arts -->
-                    <button
-                        onclick="filterCategory('arts', this)"
-                        class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
-
-                        <i class="fa-solid fa-palette text-amber-400"></i>
-
-                        Cultural Fests
-
-                    </button>
-
-
-                    <!-- Business -->
-                    <button
-                        onclick="filterCategory('business', this)"
-                        class="category-btn px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2.5 whitespace-nowrap bg-[#161626] text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800">
-
-                        <i class="fa-solid fa-briefcase text-emerald-400"></i>
-
-                        Startup & Business
-
-                    </button>
+                    @endforeach
 
                 </div>
 
@@ -286,9 +239,6 @@
 
                 </div>
 
-
-               
-
             </div>
 
 
@@ -301,51 +251,12 @@
 
                     @php
 
-                        $category = strtolower($event->category ?? 'general');
+                        $category = $event->category;
 
-                        /*
-                        |--------------------------------------------------------------------------
-                        | Category Design
-                        |--------------------------------------------------------------------------
-                        */
+                        $categoryName = $event->category?->name ?? $event->category ?? 'Event';
 
-                        if (in_array($category, ['music', 'concert', 'rock'])) {
-
-                            $categoryColor = 'purple';
-                            $categoryIcon = 'fa-music';
-                            $categoryName = 'Rock Concert';
-
-                        } elseif (in_array($category, ['tech', 'technology', 'tech summit'])) {
-
-                            $categoryColor = 'indigo';
-                            $categoryIcon = 'fa-laptop-code';
-                            $categoryName = 'Tech Summit';
-
-                        } elseif (in_array($category, ['esports', 'gaming', 'sports'])) {
-
-                            $categoryColor = 'pink';
-                            $categoryIcon = 'fa-gamepad';
-                            $categoryName = 'Gaming & Esports';
-
-                        } elseif (in_array($category, ['arts', 'cultural', 'culture'])) {
-
-                            $categoryColor = 'amber';
-                            $categoryIcon = 'fa-palette';
-                            $categoryName = 'Cultural Fest';
-
-                        } elseif (in_array($category, ['business', 'startup'])) {
-
-                            $categoryColor = 'emerald';
-                            $categoryIcon = 'fa-briefcase';
-                            $categoryName = 'Startup & Business';
-
-                        } else {
-
-                            $categoryColor = 'purple';
-                            $categoryIcon = 'fa-calendar';
-                            $categoryName = $event->category ?: 'Event';
-
-                        }
+                        $categoryColor = 'purple';
+                        $categoryIcon = 'fa-calendar';
 
                     @endphp
 
@@ -353,14 +264,13 @@
                     <!-- Dynamic Event Card -->
                     <div
                         class="event-card glass-card rounded-2xl overflow-hidden group hover:border-{{ $categoryColor }}-500/50 transition duration-300 flex flex-col justify-between"
-                        data-category="{{ $category }}">
+                        data-category="{{ $event->category_id ?? '' }}">
 
                         <div>
 
 
                             <!-- Event Image -->
                             <div class="relative h-52 overflow-hidden">
-
 
                                 @if($event->image)
 
@@ -391,7 +301,7 @@
 
                                 <!-- Category Badge -->
                                 <span
-                                    class="absolute top-4 left-4 bg-{{ $categoryColor }}-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                                    class="absolute top-4 left-4 bg-purple-600/90 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
 
                                     <i
                                         class="fa-solid {{ $categoryIcon }} mr-1">
@@ -404,6 +314,7 @@
 
                                 <!-- Bookmark -->
                                 <button
+                                    type="button"
                                     onclick="toggleBookmark(this)"
                                     class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-gray-300 hover:text-purple-400 flex items-center justify-center transition">
 
@@ -419,7 +330,7 @@
                                         class="absolute bottom-3 left-4 bg-[#0c0c14]/90 backdrop-blur-md border border-gray-700/60 text-center px-3 py-1 rounded-xl">
 
                                         <span
-                                            class="block text-xs font-bold text-{{ $categoryColor }}-400 uppercase">
+                                            class="block text-xs font-bold text-purple-400 uppercase">
 
                                             {{ \Carbon\Carbon::parse($event->date_time)->format('M') }}
 
@@ -452,7 +363,7 @@
                                         <span>
 
                                             <i
-                                                class="fa-regular fa-clock text-{{ $categoryColor }}-400 mr-1">
+                                                class="fa-regular fa-clock text-purple-400 mr-1">
                                             </i>
 
                                             {{ \Carbon\Carbon::parse($event->date_time)->format('h:i A') }}
@@ -469,7 +380,7 @@
                                         <span class="truncate">
 
                                             <i
-                                                class="fa-solid fa-location-dot text-{{ $categoryColor }}-400 mr-1">
+                                                class="fa-solid fa-location-dot text-purple-400 mr-1">
                                             </i>
 
                                             {{ $event->venue }}
@@ -483,7 +394,7 @@
 
                                 <!-- Event Title -->
                                 <h3
-                                    class="text-lg font-bold text-white group-hover:text-{{ $categoryColor }}-300 transition line-clamp-1">
+                                    class="text-lg font-bold text-white group-hover:text-purple-300 transition line-clamp-1">
 
                                     {{ $event->title }}
 
@@ -615,6 +526,7 @@
                 </p>
 
                 <button
+                    type="button"
                     onclick="filterCategory('all', document.querySelector('.category-btn'))"
                     class="mt-4 px-4 py-2 bg-purple-600/20 border border-purple-500/40 text-purple-300 text-xs font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition">
 
@@ -629,6 +541,7 @@
             <div class="mt-12 text-center">
 
                 <button
+                    type="button"
                     class="px-8 py-3.5 bg-[#161626] hover:bg-purple-600/20 text-purple-300 hover:text-white border border-gray-800 hover:border-purple-500/40 text-sm font-semibold rounded-xl transition shadow-lg">
 
                     Load More Events
@@ -663,7 +576,8 @@
                     'from-purple-600',
                     'to-indigo-600',
                     'text-white',
-                    'shadow-lg'
+                    'shadow-lg',
+                    'shadow-purple-600/20'
                 );
 
                 btn.classList.add(
@@ -693,30 +607,28 @@
                 'from-purple-600',
                 'to-indigo-600',
                 'text-white',
-                'shadow-lg'
+                'shadow-lg',
+                'shadow-purple-600/20'
             );
 
 
-            const titleMap = {
+            /*
+            |--------------------------------------------------------------------------
+            | Category Title
+            |--------------------------------------------------------------------------
+            */
 
-                'all': 'All Events',
-
-                'music': 'Rock & Concerts',
-
-                'tech': 'Tech Summits',
-
-                'esports': 'Gaming & Esports',
-
-                'arts': 'Cultural Fests',
-
-                'business': 'Startup & Business'
-
-            };
-
+            const categoryTitle = element.innerText.trim();
 
             document.getElementById('categoryNameTitle').innerText =
-                titleMap[category] || 'Events';
+                category === 'all' ? 'All Events' : categoryTitle;
 
+
+            /*
+            |--------------------------------------------------------------------------
+            | Filter Event Cards
+            |--------------------------------------------------------------------------
+            */
 
             const cards = document.querySelectorAll('.event-card');
 
@@ -725,10 +637,12 @@
 
             cards.forEach(card => {
 
-                const cardCat = card.getAttribute('data-category');
+                const cardCategory = card.getAttribute('data-category');
 
-
-                if (category === 'all' || cardCat === category) {
+                if (
+                    category === 'all' ||
+                    String(cardCategory) === String(category)
+                ) {
 
                     card.classList.remove('hidden');
 
@@ -743,8 +657,13 @@
             });
 
 
-            const noResultsDiv = document.getElementById('noResults');
+            /*
+            |--------------------------------------------------------------------------
+            | No Results
+            |--------------------------------------------------------------------------
+            */
 
+            const noResultsDiv = document.getElementById('noResults');
 
             if (visibleCount === 0) {
 
@@ -778,7 +697,6 @@
 
                 const text = card.innerText.toLowerCase();
 
-
                 if (text.includes(searchTerm)) {
 
                     card.classList.remove('hidden');
@@ -795,7 +713,6 @@
 
 
             const noResultsDiv = document.getElementById('noResults');
-
 
             if (visibleCount === 0) {
 

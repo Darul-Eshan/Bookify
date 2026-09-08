@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use App\Models\Event;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -18,9 +19,15 @@ class HomeController extends Controller
 
     public function events()
     {
-        // Database from all events fetched and passed to the view
-        $events = Event::latest()->get();
-        return view('frontend.event.events', compact('events'));
+        // Get all events with their related category
+        $events = Event::with('category')->latest()->get();
+
+        // Get all active categories
+        $categories = Category::where('status', true)
+            ->latest()
+            ->get();
+
+        return view('frontend.event.events', compact('events', 'categories'));
     }
 
     public function profile()
@@ -56,47 +63,56 @@ class HomeController extends Controller
 
         // যদি নতুন ছবি আপলোড করা হয়
         if ($request->hasFile('profile_picture')) {
-            if ($user->profile_picture && file_exists(public_path('storage/' . $user->profile_picture))) {
+            if (
+                $user->profile_picture &&
+                file_exists(public_path('storage/' . $user->profile_picture))
+            ) {
                 unlink(public_path('storage/' . $user->profile_picture));
             }
 
             $file = $request->file('profile_picture');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/profiles'), $filename);
-            
+
             $user->profile_picture = 'uploads/profiles/' . $filename;
         }
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Profile updated successfully!');
+        return redirect()
+            ->back()
+            ->with('success', 'Profile updated successfully!');
     }
 
     public function updatePassword(Request $request)
     {
         $request->validate([
             'current_password' => 'required|string',
-            'password' => 'required|string|min:8|confirmed', 
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = auth()->user();
 
         if (!Hash::check($request->current_password, $user->password)) {
             throw ValidationException::withMessages([
-                'current_password' => ['The provided password does not match your current password.'],
+                'current_password' => [
+                    'The provided password does not match your current password.'
+                ],
             ]);
         }
 
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->back()->with('success', 'Password updated successfully!');
+        return redirect()
+            ->back()
+            ->with('success', 'Password updated successfully!');
     }
 
     public function myTickets()
     {
         $user = auth()->user();
-        
+
         $tickets = [
             [
                 'id' => 101,
