@@ -13,11 +13,8 @@ class Event extends Model
     protected $fillable = [
         'title',
         'category',
-<<<<<<< HEAD
         'category_id',
-=======
         'description',
->>>>>>> cad6cb6 (solved some minor desgin issue)
         'date_time',
         'venue',
         'price',
