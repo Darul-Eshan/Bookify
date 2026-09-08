@@ -200,9 +200,9 @@ class AdminController extends Controller
     // Event Schedule List Page
     public function schedules()
     {
-        $schedules = EventSchedule::latest()->get();
+        $events = \App\Models\Event::all();
 
-        return view('backend.events.schedule', compact('schedules'));
+        return view('backend.events.schedule', compact('events'));
     }
 
     // Store New Schedule

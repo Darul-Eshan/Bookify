@@ -55,7 +55,7 @@
                     <!-- Category -->
                     <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-950/90 text-purple-300 border border-purple-500/30 backdrop-blur-md flex items-center gap-1">
 
-🎵 {{ $event->categoryRelation?->name ?? $event->category ?? 'General' }}
+                        🎵 {{ $event->categoryRelation?->name ?? $event->category ?? 'General' }}
                     </span>
 
 
@@ -167,39 +167,26 @@
                     </div>
 
 
-                    <!-- About -->
+                    <!-- About This Event (Database থেকে ডেসক্রিপশন দেখানোর জায়গা) -->
                     <div class="mb-8">
 
                         <h3 class="text-xl font-bold text-white mb-3">
                             About This Event
                         </h3>
 
-                        <p class="text-gray-300 leading-relaxed mb-4">
-
-                            Join us for
-
-                            <strong>
-                                {{ $event->title }}
-                            </strong>
-
-                            and experience an unforgettable event.
-
-                        </p>
-
-                        <p class="text-gray-400 text-sm leading-relaxed">
-
-                            The event will take place at
-                            <strong class="text-gray-300">
-                                {{ $event->venue }}
-                            </strong>
-
-                            on
-
-                            <strong class="text-gray-300">
-                                {{ $event->date_time?->format('F d, Y') }}
-                            </strong>.
-
-                        </p>
+                        <div class="text-gray-300 leading-relaxed space-y-3">
+                            @if(!empty($event->description))
+                                {!! nl2br(e($event->description)) !!}
+                            @else
+                                <p>
+                                    Join us for <strong>{{ $event->title }}</strong> and experience an unforgettable event.
+                                </p>
+                                <p class="text-gray-400 text-sm">
+                                    The event will take place at <strong class="text-gray-300">{{ $event->venue }}</strong> 
+                                    on <strong class="text-gray-300">{{ $event->date_time?->format('F d, Y') }}</strong>.
+                                </p>
+                            @endif
+                        </div>
 
                     </div>
 
@@ -398,15 +385,10 @@
                 </div>
 
 
-                <!-- Checkout -->
-                <button
-                    onclick="alert('Redirecting to secure payment gateway...')"
-                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold shadow-lg shadow-purple-600/30 hover:from-purple-500 hover:to-indigo-500 transition text-center block"
-                >
-
+                <!-- Checkout Button -->
+                <a href="{{ route('checkout.view') }}" class="block w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-purple-600/30 transition text-center">
                     Proceed to Checkout
-
-                </button>
+                </a>
 
 
                 <p class="text-[11px] text-gray-500 text-center mt-3">
