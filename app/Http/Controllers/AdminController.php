@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; // ⭐ UPDATED
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Category;
 use App\Models\Booking;
 use App\Models\EventSchedule;
 
@@ -32,7 +33,7 @@ class AdminController extends Controller
     // Manage Events Page
     public function events()
     {
-        $events = Event::latest()->get();
+        $events = Event::with('category')->latest()->get();
 
         return view('backend.events.index', compact('events'));
     }
@@ -40,21 +41,22 @@ class AdminController extends Controller
     // Create Event Page
     public function createEvent()
     {
-        return view('backend.events.create');
+        $categories = Category::where('status', true)->latest()->get();
+
+        return view('backend.events.create', compact('categories'));
     }
 
     // Store New Event
     public function storeEvent(Request $request)
     {
-        // Form Validation
         $request->validate([
-            'title'     => 'required|string|max:255',
-            'category'  => 'required|string',
-            'date_time' => 'required|date',
-            'venue'     => 'required|string',
-            'price'     => 'required|numeric',
-            'capacity'  => 'required|integer',
-            'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'title'       => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'date_time'   => 'required|date',
+            'venue'       => 'required|string',
+            'price'       => 'required|numeric',
+            'capacity'    => 'required|integer',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $imagePath = null;
@@ -64,15 +66,19 @@ class AdminController extends Controller
             $imagePath = $request->file('image')->store('events', 'public');
         }
 
+        // Get selected category
+        $category = Category::findOrFail($request->category_id);
+
         // Save Event
         Event::create([
-            'title'     => $request->title,
-            'category'  => $request->category,
-            'date_time' => $request->date_time,
-            'venue'     => $request->venue,
-            'price'     => $request->price,
-            'capacity'  => $request->capacity,
-            'image'     => $imagePath,
+            'title'       => $request->title,
+            'category'    => $category->name,
+            'category_id' => $category->id,
+            'date_time'   => $request->date_time,
+            'venue'       => $request->venue,
+            'price'       => $request->price,
+            'capacity'    => $request->capacity,
+            'image'       => $imagePath,
         ]);
 
         return redirect()
@@ -80,40 +86,32 @@ class AdminController extends Controller
             ->with('success', 'Event created successfully!');
     }
 
-
-    // ⭐ UPDATED: Separate Event Edit Page
+    // Event Edit Page
     public function editEvent($id)
     {
         $event = Event::findOrFail($id);
 
-        return view('backend.events.edit', compact('event'));
+        $categories = Category::where('status', true)->latest()->get();
+
+        return view('backend.events.edit', compact('event', 'categories'));
     }
 
-
-    // ⭐ UPDATED: Update Event + Image
+    // Update Event + Image
     public function updateEvent(Request $request, $id)
     {
         $request->validate([
-            'title'     => 'required|string|max:255',
-            'category'  => 'required|string',
-            'date_time' => 'required|date',
-            'venue'     => 'required|string',
-            'price'     => 'required|numeric',
-            'capacity'  => 'required|integer',
-
-            // ⭐ UPDATED: Image is now an actual uploaded file
-            'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'title'       => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'date_time'   => 'required|date',
+            'venue'       => 'required|string',
+            'price'       => 'required|numeric',
+            'capacity'    => 'required|integer',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $event = Event::findOrFail($id);
 
-        /*
-        |--------------------------------------------------------------------------
-        | ⭐ UPDATED: Remove Existing Image
-        |--------------------------------------------------------------------------
-        */
-
-        // If user selected "Remove Image"
+        // Remove Existing Image
         if ($request->remove_image == '1') {
 
             if (
@@ -126,13 +124,7 @@ class AdminController extends Controller
             $event->image = null;
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | ⭐ UPDATED: Upload New Image
-        |--------------------------------------------------------------------------
-        */
-
+        // Upload New Image
         if ($request->hasFile('image')) {
 
             // Delete old image first
@@ -148,19 +140,17 @@ class AdminController extends Controller
                 ->store('events', 'public');
         }
 
+        // Get selected category
+        $category = Category::findOrFail($request->category_id);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Update Event Information
-        |--------------------------------------------------------------------------
-        */
-
-        $event->title     = $request->title;
-        $event->category  = $request->category;
-        $event->date_time = $request->date_time;
-        $event->venue     = $request->venue;
-        $event->price     = $request->price;
-        $event->capacity  = $request->capacity;
+        // Update Event Information
+        $event->title       = $request->title;
+        $event->category    = $category->name;
+        $event->category_id = $category->id;
+        $event->date_time   = $request->date_time;
+        $event->venue       = $request->venue;
+        $event->price       = $request->price;
+        $event->capacity    = $request->capacity;
 
         $event->save();
 
@@ -169,8 +159,7 @@ class AdminController extends Controller
             ->with('success', 'Event updated successfully!');
     }
 
-
-    // ⭐ UPDATED: Delete Event + Event Image
+    // Delete Event + Event Image
     public function destroyEvent($id)
     {
         $event = Event::findOrFail($id);
@@ -191,7 +180,6 @@ class AdminController extends Controller
             ->with('success', 'Event deleted successfully!');
     }
 
-
     // Event Organizers List Page
     public function organizers()
     {
@@ -203,7 +191,6 @@ class AdminController extends Controller
         return view('backend.events.organizers', compact('organizers'));
     }
 
-
     // Event Organizer Profile Details Page
     public function organizerDetails($id)
     {
@@ -212,7 +199,6 @@ class AdminController extends Controller
         return view('backend.events.organizer-details', compact('organizer'));
     }
 
-
     // Event Schedule List Page
     public function schedules()
     {
@@ -220,7 +206,6 @@ class AdminController extends Controller
 
         return view('backend.events.schedule', compact('schedules'));
     }
-
 
     // Store New Schedule
     public function storeSchedule(Request $request)
@@ -245,7 +230,6 @@ class AdminController extends Controller
             ->back()
             ->with('success', 'Schedule added successfully!');
     }
-
 
     // Update Schedule
     public function updateSchedule(Request $request, $id)
@@ -273,7 +257,6 @@ class AdminController extends Controller
             ->with('success', 'Schedule updated successfully!');
     }
 
-
     // Delete Schedule
     public function destroySchedule($id)
     {
@@ -287,8 +270,9 @@ class AdminController extends Controller
     }
 
     public function profile()
-{
-    $admin = auth()->user();
-    return view('backend.admins.profile', compact('admin')); 
-}
+    {
+        $admin = auth()->user();
+
+        return view('backend.admins.profile', compact('admin'));
+    }
 }

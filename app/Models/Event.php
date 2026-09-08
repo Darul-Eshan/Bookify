@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Event extends Model
 {
@@ -12,6 +13,7 @@ class Event extends Model
     protected $fillable = [
         'title',
         'category',
+        'category_id',
         'date_time',
         'venue',
         'price',
@@ -35,11 +37,20 @@ class Event extends Model
             if (filter_var($this->image, FILTER_VALIDATE_URL)) {
                 return $this->image;
             }
+
             // যদি লোকাল ফাইল পাথ হয়
             return asset('storage/' . $this->image);
         }
 
         // ডিফল্ট ইমেজ
         return 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&auto=format&fit=crop&q=80';
+    }
+
+    /**
+     * Event belongs to a Category
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

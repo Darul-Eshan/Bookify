@@ -7,10 +7,8 @@
 
     <title>Manage Events - Admin Dashboard</title>
 
-    <!-- Tailwind CSS / Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
@@ -28,17 +26,14 @@
         <!-- Sidebar -->
         @include('backend.include.sidebar')
 
-
         <!-- Main Content -->
         <div class="flex-1 flex flex-col lg:pl-64 overflow-hidden">
 
             <!-- Header -->
             @include('backend.include.header')
 
-
             <!-- Main Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-[#0B0B14] p-6">
-
 
                 <!-- Page Header -->
                 <div class="mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -55,10 +50,8 @@
 
                     </div>
 
-
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center gap-3">
-
 
                         <!-- Refresh -->
                         <button onclick="window.location.reload()"
@@ -80,7 +73,6 @@
 
                         </button>
 
-
                         <!-- Export -->
                         <a href="#"
                             class="px-3.5 py-2.5 bg-[#18182f] hover:bg-gray-800 text-gray-300 font-semibold text-xs rounded-xl border border-gray-800 transition flex items-center gap-2">
@@ -99,7 +91,6 @@
                             Export CSV
 
                         </a>
-
 
                         <!-- Create Event -->
                         <a href="{{ route('admin.events.create') }}"
@@ -124,10 +115,8 @@
 
                 </div>
 
-
                 <!-- Event Stats -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-
 
                     <!-- Total Events -->
                     <div class="bg-[#121222] border border-gray-800 rounded-2xl p-5 shadow-lg">
@@ -146,7 +135,6 @@
 
                     </div>
 
-
                     <!-- Live -->
                     <div class="bg-[#121222] border border-gray-800 rounded-2xl p-5 shadow-lg">
 
@@ -164,7 +152,6 @@
 
                     </div>
 
-
                     <!-- Upcoming -->
                     <div class="bg-[#121222] border border-gray-800 rounded-2xl p-5 shadow-lg">
 
@@ -181,7 +168,6 @@
                         </span>
 
                     </div>
-
 
                     <!-- Sold Out -->
                     <div class="bg-[#121222] border border-gray-800 rounded-2xl p-5 shadow-lg">
@@ -202,10 +188,8 @@
 
                 </div>
 
-
                 <!-- Event Directory -->
                 <div class="bg-[#121222] border border-gray-800 rounded-2xl p-6 shadow-lg">
-
 
                     <!-- Search / Filter -->
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
@@ -214,13 +198,11 @@
                             Event Directory
                         </h3>
 
-
                         <div class="flex items-center gap-3 w-full sm:w-auto">
 
                             <input type="text"
                                 placeholder="Search event title or venue..."
                                 class="w-full sm:w-64 bg-[#18182f] text-xs text-gray-200 border border-gray-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-purple-500 placeholder-gray-500 transition">
-
 
                             <select
                                 class="bg-[#18182f] text-xs text-gray-200 border border-gray-800 rounded-xl px-3 py-2.5 focus:outline-none focus:border-purple-500 transition">
@@ -251,12 +233,10 @@
 
                     </div>
 
-
                     <!-- Table -->
                     <div class="overflow-x-auto">
 
                         <table class="w-full text-left text-sm text-gray-300">
-
 
                             <!-- Table Header -->
                             <thead class="bg-[#161628] text-gray-400 uppercase text-xs tracking-wider">
@@ -295,21 +275,17 @@
 
                             </thead>
 
-
                             <!-- Table Body -->
                             <tbody class="divide-y divide-gray-800">
-
 
                                 @forelse($events as $event)
 
                                     <tr class="hover:bg-[#18182f]/50 transition">
 
-
                                         <!-- Event Details -->
                                         <td class="p-3">
 
                                             <div class="flex items-center gap-3">
-
 
                                                 @if($event->image)
 
@@ -328,7 +304,6 @@
 
                                                 @endif
 
-
                                                 <div>
 
                                                     <h4 class="text-sm font-bold text-white">
@@ -345,19 +320,17 @@
 
                                         </td>
 
-
                                         <!-- Category -->
                                         <td class="p-3">
 
                                             <span
                                                 class="text-xs px-2.5 py-1 bg-purple-950 text-purple-300 rounded-lg font-semibold">
 
-                                                {{ $event->category }}
+                                                {{ $event->category?->name ?? $event->category }}
 
                                             </span>
 
                                         </td>
-
 
                                         <!-- Date -->
                                         <td class="p-3 text-xs text-gray-300">
@@ -374,7 +347,6 @@
 
                                         </td>
 
-
                                         <!-- Capacity -->
                                         <td class="p-3 text-xs">
 
@@ -390,7 +362,6 @@
 
                                             </div>
 
-
                                             <div class="w-32 bg-gray-800 h-1.5 rounded-full overflow-hidden">
 
                                                 <div class="bg-purple-600 h-full rounded-full"
@@ -401,14 +372,12 @@
 
                                         </td>
 
-
                                         <!-- Price -->
                                         <td class="p-3 font-semibold text-white">
 
                                             ৳{{ number_format($event->price, 2) }}
 
                                         </td>
-
 
                                         <!-- Status -->
                                         <td class="p-3">
@@ -422,12 +391,10 @@
 
                                         </td>
 
-
                                         <!-- Actions -->
                                         <td class="p-3 text-right">
 
                                             <div class="flex items-center justify-end gap-2">
-
 
                                                 <!-- EDIT -->
                                                 <a href="{{ route('admin.events.edit', $event->id) }}"
@@ -450,7 +417,6 @@
 
                                                 </a>
 
-
                                                 <!-- DELETE -->
                                                 <form action="{{ route('admin.events.delete', $event->id) }}"
                                                     method="POST"
@@ -471,7 +437,7 @@
                                                             <path stroke-linecap="round"
                                                                 stroke-linejoin="round"
                                                                 stroke-width="2"
-                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-2-2h-4a1 1 0 00-2 2v3m4 0h6">
+                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 2 0 00-2-2h-4a2 2 0 00-2 2v3m4 0h6">
                                                             </path>
 
                                                         </svg>
@@ -487,7 +453,6 @@
                                         </td>
 
                                     </tr>
-
 
                                 @empty
 
@@ -507,16 +472,14 @@
                                                     <path stroke-linecap="round"
                                                         stroke-linejoin="round"
                                                         stroke-width="1.5"
-                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                        d="M8 7V3m8 4v-4m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                                                     </path>
 
                                                 </svg>
 
-
                                                 <p>
                                                     No events found in the database.
                                                 </p>
-
 
                                                 <a href="{{ route('admin.events.create') }}"
                                                     class="text-xs px-3 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition">
@@ -533,7 +496,6 @@
 
                                 @endforelse
 
-
                             </tbody>
 
                         </table>
@@ -543,7 +505,6 @@
                 </div>
 
             </main>
-
 
             <!-- Footer -->
             @include('backend.include.footer')
