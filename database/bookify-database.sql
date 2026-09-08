@@ -93,12 +93,7 @@ CREATE TABLE "settings" ("id" integer primary key autoincrement not null, "key" 
 CREATE UNIQUE INDEX "settings_key_unique" ON "settings" ("key");
 
 
-DROP TABLE IF EXISTS "sqlite_sequence";
-CREATE TABLE sqlite_sequence(name,seq);
 
-INSERT INTO "sqlite_sequence" ("name", "seq") VALUES ('migrations',	11);
-INSERT INTO "sqlite_sequence" ("name", "seq") VALUES ('users',	2);
-INSERT INTO "sqlite_sequence" ("name", "seq") VALUES ('events',	9);
 
 DROP TABLE IF EXISTS "transactions";
 CREATE TABLE "transactions" ("id" integer primary key autoincrement not null, "transaction_id" varchar not null, "user_name" varchar not null, "email" varchar, "event_name" varchar not null, "amount" numeric not null, "method" varchar not null, "phone" varchar, "status" varchar not null default 'success', "created_at" datetime, "updated_at" datetime);
