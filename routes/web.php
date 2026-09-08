@@ -13,7 +13,6 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\EditorManagementController;
 use App\Http\Controllers\Admin\ModeratorManagementController;
-use App\Http\Controllers\WishlistController;
 
 
 /*
