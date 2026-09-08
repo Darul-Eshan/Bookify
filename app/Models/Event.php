@@ -28,24 +28,16 @@ class Event extends Model
         'capacity'  => 'integer',
     ];
 
-    
     public function getImageUrlAttribute()
     {
         if ($this->image) {
-         
             if (filter_var($this->image, FILTER_VALIDATE_URL)) {
                 return $this->image;
             }
-<<<<<<< HEAD
 
-            // যদি লোকাল ফাইল পাথ হয়
-=======
-       
->>>>>>> cad6cb6 (solved some minor desgin issue)
             return asset('storage/' . $this->image);
         }
 
-      
         return 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&auto=format&fit=crop&q=80';
     }
 
