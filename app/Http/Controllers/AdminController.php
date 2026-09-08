@@ -33,7 +33,7 @@ class AdminController extends Controller
     // Manage Events Page
     public function events()
     {
-        $events = Event::with('category')->latest()->get();
+        $events = Event::with('categoryRelation')->latest()->get();
 
         return view('backend.events.index', compact('events'));
     }

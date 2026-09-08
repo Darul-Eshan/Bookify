@@ -251,9 +251,19 @@
 
                     @php
 
-                        $category = $event->category;
+                        /*
+                        |--------------------------------------------------------------------------
+                        | Category
+                        |--------------------------------------------------------------------------
+                        | Use categoryRelation because "category" is also an existing
+                        | database column in the events table.
+                        */
 
-                        $categoryName = $event->category?->name ?? $event->category ?? 'Event';
+                        $category = $event->categoryRelation;
+
+                        $categoryName = $event->categoryRelation?->name
+                            ?? $event->category
+                            ?? 'Event';
 
                         $categoryColor = 'purple';
                         $categoryIcon = 'fa-calendar';

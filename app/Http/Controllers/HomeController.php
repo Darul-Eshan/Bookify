@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function events()
     {
         // Get all events with their related category
-        $events = Event::with('category')->latest()->get();
+        $events = Event::with('categoryRelation')->latest()->get();
 
         // Get all active categories
         $categories = Category::where('status', true)
@@ -42,7 +42,8 @@ class HomeController extends Controller
             return redirect()->route('events');
         }
 
-        $event = Event::findOrFail($id);
+        $event = Event::with('categoryRelation')->findOrFail($id);
+
         return view('frontend.event.event-details', compact('event'));
     }
 

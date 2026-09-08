@@ -49,8 +49,8 @@ class Event extends Model
     /**
      * Event belongs to a Category
      */
-    public function category()
+    public function categoryRelation()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
