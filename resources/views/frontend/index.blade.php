@@ -16,9 +16,12 @@
         <!-- Hero Section (Dynamic from Database) -->
         <section class="relative min-h-[520px] flex items-end pb-12 overflow-hidden border-b border-gray-800/30">
             <div class="absolute inset-0 z-0">
-                <img src="{{ filter_var($featuredEvent->image, FILTER_VALIDATE_URL) ? $featuredEvent->image : asset('storage/' . $featuredEvent->image) }}" alt="Hero Background" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B14] via-[#0B0B14]/75 to-[#0B0B14]/40"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-[#0B0B14] via-[#0B0B14]/80 to-transparent"></div>
+                <!-- ইমেজ ব্রাইট করার জন্য brightness(1.2) এবং contrast(1.1) যুক্ত করা হয়েছে -->
+                <img src="{{ filter_var($featuredEvent->image, FILTER_VALIDATE_URL) ? $featuredEvent->image : asset('storage/' . $featuredEvent->image) }}" alt="Hero Background" class="w-full h-full object-cover filter brightness-110 contrast-105">
+                
+                <!-- ওভারলে অপাসিটি হালকা কমানো হয়েছে যাতে ব্যাকগ্রাউন্ডের ছবি উজ্জ্বল দেখায় -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B14] via-[#0B0B14]/60 to-[#0B0B14]/20"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0B0B14]/90 via-[#0B0B14]/50 to-transparent"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
@@ -28,12 +31,12 @@
                         Featured Event
                     </span>
 
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-2">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-2 drop-shadow-md">
                         {{ $featuredEvent->title }}
                     </h1>
                     <p class="text-purple-300 font-medium mb-4 text-lg">{{ $featuredEvent->artist ?? 'Various Artists' }}</p>
 
-                    <div class="flex flex-wrap items-center gap-6 text-sm text-gray-300 mb-8">
+                    <div class="flex flex-wrap items-center gap-6 text-sm text-gray-200 mb-8">
                         <span class="flex items-center gap-1.5">
                             <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                             {{ \Carbon\Carbon::parse($featuredEvent->date_time ?? $featuredEvent->date)->format('M d, Y') }}
@@ -51,7 +54,7 @@
                        <a href="{{ route('events.details', $featuredEvent->id) }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-lg px-10 py-2.5 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
-                        <span class="text-sm text-gray-400">From <strong class="text-white text-lg font-bold ml-1">{{ is_numeric($featuredEvent->price) ? 'BDT ' . number_format($featuredEvent->price) : $featuredEvent->price }}</strong></span>
+                        <span class="text-sm text-gray-300">From <strong class="text-white text-lg font-bold ml-1">{{ is_numeric($featuredEvent->price) ? 'BDT ' . number_format($featuredEvent->price) : $featuredEvent->price }}</strong></span>
                     </div>
                 </div>
             </div>
@@ -159,7 +162,7 @@
 
 </div>
 
-<!-- Realistic Image Sliding Banner (Footer-er Upore) -->
+<!-- Realistic Image Sliding Banner -->
 <div class="max-w-7xl mx-auto px-6 mb-12">
     <div class="relative bg-[#121222] border border-purple-500/30 rounded-2xl overflow-hidden shadow-2xl">
         
@@ -167,16 +170,16 @@
         <div class="relative h-64 md:h-80 w-full overflow-hidden" id="imageSlider">
             
             @php
-                $sliderEvents = $events->take(3); // প্রথম ৩টি ইভেন্ট স্লাইডারে দেখানোর জন্য
+                $sliderEvents = $events->take(3); // প্রথম ৩টি ইভেন্ট স্লাইডারে দেখানোর জন্য 
             @endphp
 
             @forelse($sliderEvents as $key => $slide)
                 <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out {{ $key === 0 ? 'opacity-100' : 'opacity-0' }} slide-item">
-                    <img src="{{ filter_var($slide->image, FILTER_VALIDATE_URL) ? $slide->image : asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#121222] via-black/50 to-transparent flex flex-col justify-end p-6 md:p-8">
+                    <img src="{{ filter_var($slide->image, FILTER_VALIDATE_URL) ? $slide->image : asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}" class="w-full h-full object-cover filter brightness-110 contrast-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#121222] via-black/40 to-transparent flex flex-col justify-end p-6 md:p-8">
                         <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">{{ $slide->category }}</span>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-white">{{ $slide->title }}</h3>
-                        <p class="text-gray-300 text-sm mt-1">{{ $slide->venue ?? $slide->location }} - {{ \Carbon\Carbon::parse($slide->date_time ?? $slide->date)->format('M d, Y') }}</p>
+                        <p class="text-gray-200 text-sm mt-1">{{ $slide->venue ?? $slide->location }} - {{ \Carbon\Carbon::parse($slide->date_time ?? $slide->date)->format('M d, Y') }}</p>
                     </div>
                 </div>
             @empty
