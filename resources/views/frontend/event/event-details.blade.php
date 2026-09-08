@@ -55,8 +55,7 @@
                     <!-- Category -->
                     <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-950/90 text-purple-300 border border-purple-500/30 backdrop-blur-md flex items-center gap-1">
 
-                        🎵 {{ $event->category ?: 'General' }}
-
+🎵 {{ $event->categoryRelation?->name ?? $event->category ?? 'General' }}
                     </span>
 
 

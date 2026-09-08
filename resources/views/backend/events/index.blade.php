@@ -1,3 +1,4 @@
+```blade
 <!DOCTYPE html>
 <html lang="en">
 
@@ -326,7 +327,7 @@
                                             <span
                                                 class="text-xs px-2.5 py-1 bg-purple-950 text-purple-300 rounded-lg font-semibold">
 
-                                                {{ $event->category?->name ?? $event->category }}
+                                                {{ $event->categoryRelation?->name ?? $event->category ?? 'General' }}
 
                                             </span>
 
@@ -516,3 +517,4 @@
 </body>
 
 </html>
+```
