@@ -79,16 +79,19 @@
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
 
+                                    <!-- Blue Edit Button -->
                                     <button
                                         onclick="openEditModal(
                                             {{ $category->id }},
                                             '{{ addslashes($category->name) }}',
                                             '{{ addslashes($category->slug) }}'
                                         )"
-                                        class="px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
+                                        style="background-color: #2563eb;"
+                                        class="px-4 py-1.5 text-white rounded-lg text-sm font-medium transition duration-200">
                                         Edit
                                     </button>
 
+                                    <!-- Red Delete Button -->
                                     <form
                                         action="{{ route('admin.categories.delete', $category->id) }}"
                                         method="POST"
@@ -99,7 +102,8 @@
 
                                         <button
                                             type="submit"
-                                            class="px-3 py-1.5 rounded-lg bg-red-500/20 text-red-300 hover:bg-red-500/30">
+                                            style="background-color: #dc2626;"
+                                            class="px-4 py-1.5 text-white rounded-lg text-sm font-medium transition duration-200">
                                             Delete
                                         </button>
 
@@ -133,7 +137,7 @@
 
     <div class="bg-[#121222] border border-gray-800 rounded-2xl w-full max-w-md p-6">
 
-        <div class="flex justify-between items-center mb-5">
+        <div class="flex justify-between items-center mb-8">
             <h2 class="text-xl font-bold text-white">Create Category</h2>
 
             <button
@@ -147,7 +151,7 @@
 
             @csrf
 
-            <div class="mb-4">
+            <div class="mb-5">
                 <label class="block text-gray-300 mb-2">Category Name</label>
 
                 <input
@@ -159,7 +163,7 @@
             </div>
 
             <div class="mb-5">
-                <label class="block text-gray-300 mb-2">Slug</label>
+                <label class="block text-gray-300 mt-4 mb-3">Slug</label>
 
                 <input
                     type="text"
@@ -171,7 +175,7 @@
 
             <button
                 type="submit"
-                class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold">
+                class="w-full mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold">
                 Create Category
             </button>
 
@@ -187,7 +191,7 @@
 
     <div class="bg-[#121222] border border-gray-800 rounded-2xl w-full max-w-md p-6">
 
-        <div class="flex justify-between items-center mb-5">
+        <div class="flex justify-between items-center mb-8">
             <h2 class="text-xl font-bold text-white">Edit Category</h2>
 
             <button
@@ -202,7 +206,7 @@
             @csrf
             @method('PUT')
 
-            <div class="mb-4">
+            <div class="mb-5">
                 <label class="block text-gray-300 mb-2">Category Name</label>
 
                 <input
@@ -214,7 +218,7 @@
             </div>
 
             <div class="mb-5">
-                <label class="block text-gray-300 mb-2">Slug</label>
+                <label class="block text-gray-300 mt-4 mb-3">Slug</label>
 
                 <input
                     id="editSlug"
@@ -226,7 +230,7 @@
 
             <button
                 type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+                class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
                 Update Category
             </button>
 

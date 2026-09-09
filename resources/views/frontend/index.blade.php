@@ -3,11 +3,22 @@
 @section('section')
 
 <!-- Main Wrapper with Alpine.js State -->
-<div x-data="{ activeCategory: 'All', activeCategoryName: 'All' }">
+<div x-data="{ 
+    activeCategory: 'all', 
+    activeCategoryName: 'All',
+    filterMatches(eventId, eventName, eventSlug) {
+        if (this.activeCategory === 'all') return true;
+        let active = String(this.activeCategory).toLowerCase().trim();
+        let eId = String(eventId || '').toLowerCase().trim();
+        let eName = String(eventName || '').toLowerCase().trim();
+        let eSlug = String(eventSlug || '').toLowerCase().trim();
+        return active === eId || active === eName || active === eSlug;
+    }
+}">
 
     @if($events->count() > 0)
         @php 
-            $featuredEvent = $events->first(); // প্রথম ইভেন্টটি হিরো সেকশনে দেখানোর জন্য 
+            $featuredEvent = $events->first(); 
         @endphp
         <!-- Hero Section (Dynamic from Database) -->
         <section class="relative min-h-[520px] flex items-end pb-12 overflow-hidden border-b border-gray-800/30">
@@ -60,8 +71,8 @@
         <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             <!-- All Button -->
             <button 
-                @click="activeCategory = 'All'; activeCategoryName = 'All'"
-                :class="activeCategory === 'All' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
+                @click="activeCategory = 'all'; activeCategoryName = 'All'"
+                :class="activeCategory === 'all' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
                 class="px-5 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap">
                 All Events
             </button>
@@ -71,10 +82,11 @@
                 @php
                     $catId = is_object($category) ? $category->id : $category;
                     $catName = is_object($category) ? $category->name : $category;
+                    $catSlug = \Illuminate\Support\Str::slug($catName);
                 @endphp
                 <button 
-                    @click="activeCategory = '{{ $catId }}'; activeCategoryName = '{{ $catName }}'"
-                    :class="activeCategory == '{{ $catId }}' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
+                    @click="activeCategory = '{{ $catId }}'; activeCategoryName = '{{ addslashes($catName) }}'"
+                    :class="(activeCategory == '{{ $catId }}' || activeCategory === '{{ $catSlug }}') ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
                     class="px-5 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap">
                     {{ $catName }}
                 </button>
@@ -86,7 +98,7 @@
     <main class="max-w-7xl mx-auto px-6 py-4 pb-16">
         <div class="flex items-center justify-between mb-8">
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span x-text="activeCategory === 'All' ? 'All Events' : activeCategoryName + ' Events'"></span>
+                <span x-text="activeCategory === 'all' ? 'All Events' : activeCategoryName + ' Events'"></span>
             </h2>
             <a href="#" class="text-sm font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1 transition">
                 View All
@@ -97,11 +109,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($events as $event)
             @php
-                $eventCatId = $event->category_id ?? $event->categoryRelation?->id ?? $event->category;
+                $eventCatId = $event->category_id ?? $event->categoryRelation?->id ?? '';
                 $eventCatName = $event->categoryRelation?->name ?? $event->category ?? 'Event';
+                $eventCatSlug = \Illuminate\Support\Str::slug($eventCatName);
             @endphp
             <div 
-                x-show="activeCategory === 'All' || activeCategory == '{{ $eventCatId }}' || activeCategory == '{{ $eventCatName }}'"
+                x-show="filterMatches('{{ $eventCatId }}', '{{ addslashes($eventCatName) }}', '{{ $eventCatSlug }}')"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
