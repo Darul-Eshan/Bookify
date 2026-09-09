@@ -43,13 +43,9 @@ Route::get('/cart', function () {
     return view('frontend.cart.cart');
 })->name('cart');
 
-Route::get('/viewcart', function () {
-    return view('frontend.cart.cart');
-})->name('cart.view');
+Route::get('/viewcart', function () {return view('frontend.cart.cart');})->name('cart.view');
 
-Route::get('/checkout', function () {
-    return view('frontend.cart.checkout');
-})->name('checkout.view');
+Route::get('/checkout', function () {return view('frontend.cart.checkout');})->name('checkout.view');
 
 
 /*

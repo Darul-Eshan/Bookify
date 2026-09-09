@@ -58,6 +58,7 @@ class AdminController extends Controller
         $request->validate([
             'title'       => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
+            'description' => 'nullable|string', 
             'date_time'   => 'required|date',
             'venue'       => 'required|string',
             'price'       => 'required|numeric',
@@ -80,6 +81,7 @@ class AdminController extends Controller
             'title'       => $request->title,
             'category'    => $category->name,
             'category_id' => $category->id,
+            'description' => $request->description, 
             'date_time'   => $request->date_time,
             'venue'       => $request->venue,
             'price'       => $request->price,
@@ -96,18 +98,18 @@ class AdminController extends Controller
     public function editEvent($id)
     {
         $event = Event::findOrFail($id);
-
         $categories = Category::where('status', true)->latest()->get();
 
         return view('backend.events.edit', compact('event', 'categories'));
     }
 
-    // Update Event + Image
+    // Update Event + Image + Description
     public function updateEvent(Request $request, $id)
     {
         $request->validate([
             'title'       => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
+            'description' => 'nullable|string', 
             'date_time'   => 'required|date',
             'venue'       => 'required|string',
             'price'       => 'required|numeric',
@@ -119,7 +121,6 @@ class AdminController extends Controller
 
         // Remove Existing Image
         if ($request->remove_image == '1') {
-
             if (
                 $event->image &&
                 Storage::disk('public')->exists($event->image)
@@ -132,8 +133,6 @@ class AdminController extends Controller
 
         // Upload New Image
         if ($request->hasFile('image')) {
-
-            // Delete old image first
             if (
                 $event->image &&
                 Storage::disk('public')->exists($event->image)
@@ -141,9 +140,7 @@ class AdminController extends Controller
                 Storage::disk('public')->delete($event->image);
             }
 
-            // Store new image
-            $event->image = $request->file('image')
-                ->store('events', 'public');
+            $event->image = $request->file('image')->store('events', 'public');
         }
 
         // Get selected category
@@ -153,6 +150,7 @@ class AdminController extends Controller
         $event->title       = $request->title;
         $event->category    = $category->name;
         $event->category_id = $category->id;
+        $event->description = $request->description; 
         $event->date_time   = $request->date_time;
         $event->venue       = $request->venue;
         $event->price       = $request->price;
@@ -160,9 +158,7 @@ class AdminController extends Controller
 
         $event->save();
 
-        return redirect()
-            ->route('admin.events')
-            ->with('success', 'Event updated successfully!');
+        return redirect()->route('admin.events')->with('success', 'Event updated successfully!');
     }
 
     // Delete Event + Event Image
@@ -170,7 +166,6 @@ class AdminController extends Controller
     {
         $event = Event::findOrFail($id);
 
-        // Delete event image from storage
         if (
             $event->image &&
             Storage::disk('public')->exists($event->image)
@@ -178,12 +173,9 @@ class AdminController extends Controller
             Storage::disk('public')->delete($event->image);
         }
 
-        // Delete event from database
         $event->delete();
 
-        return redirect()
-            ->route('admin.events')
-            ->with('success', 'Event deleted successfully!');
+        return redirect()->route('admin.events')->with('success', 'Event deleted successfully!');
     }
 
     // Event Organizers List Page
@@ -208,9 +200,9 @@ class AdminController extends Controller
     // Event Schedule List Page
     public function schedules()
     {
-        $schedules = EventSchedule::latest()->get();
+        $events = \App\Models\Event::all();
 
-        return view('backend.events.schedule', compact('schedules'));
+        return view('backend.events.schedule', compact('events'));
     }
 
     // Store New Schedule
@@ -267,7 +259,6 @@ class AdminController extends Controller
     public function destroySchedule($id)
     {
         $schedule = EventSchedule::findOrFail($id);
-
         $schedule->delete();
 
         return redirect()
@@ -278,7 +269,6 @@ class AdminController extends Controller
     public function profile()
     {
         $admin = auth()->user();
-
         return view('backend.admins.profile', compact('admin'));
     }
 }
