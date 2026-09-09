@@ -12,10 +12,15 @@ use App\Models\Category;
 class HomeController extends Controller
 {
     public function index()
-    {
-        $events = Event::latest()->take(6)->get();
-        return view('frontend.index', compact('events'));
-    }
+{
+    $events = Event::with('categoryRelation')->latest()->take(6)->get();
+    
+    
+    $categories = Category::where('status', true)->latest()->get();
+
+    
+    return view('frontend.index', compact('events', 'categories'));
+}
 
     public function events()
     {

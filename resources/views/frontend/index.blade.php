@@ -1,13 +1,9 @@
 @extends('frontend.layout.master')
 
 @section('section')
-@php
-    // ক্যাটাগরিগুলো ফিল্টারিংয়ের জন্য ফিক্সড রাখা হলো
-    $categories = ['All', 'Music', 'Tech', 'Cultural', 'Comedy'];
-@endphp
 
 <!-- Main Wrapper with Alpine.js State -->
-<div x-data="{ activeCategory: 'All' }">
+<div x-data="{ activeCategory: 'All', activeCategoryName: 'All' }">
 
     @if($events->count() > 0)
         @php 
@@ -16,10 +12,8 @@
         <!-- Hero Section (Dynamic from Database) -->
         <section class="relative min-h-[520px] flex items-end pb-12 overflow-hidden border-b border-gray-800/30">
             <div class="absolute inset-0 z-0">
-                <!-- ইমেজ ব্রাইট করার জন্য brightness(1.2) এবং contrast(1.1) যুক্ত করা হয়েছে -->
                 <img src="{{ filter_var($featuredEvent->image, FILTER_VALIDATE_URL) ? $featuredEvent->image : asset('storage/' . $featuredEvent->image) }}" alt="Hero Background" class="w-full h-full object-cover filter brightness-110 contrast-105">
                 
-                <!-- ওভারলে অপাসিটি হালকা কমানো হয়েছে যাতে ব্যাকগ্রাউন্ডের ছবি উজ্জ্বল দেখায় -->
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B14] via-[#0B0B14]/60 to-[#0B0B14]/20"></div>
                 <div class="absolute inset-0 bg-gradient-to-r from-[#0B0B14]/90 via-[#0B0B14]/50 to-transparent"></div>
             </div>
@@ -61,15 +55,28 @@
         </section>
     @endif
 
-    <!-- Category Filters Navigation -->
+    <!-- Dynamic Category Filters Navigation -->
     <div class="max-w-7xl mx-auto px-6 py-6">
         <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <!-- All Button -->
+            <button 
+                @click="activeCategory = 'All'; activeCategoryName = 'All'"
+                :class="activeCategory === 'All' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
+                class="px-5 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap">
+                All Events
+            </button>
+
+            <!-- Dynamic Categories Loop from Database -->
             @foreach($categories as $category)
+                @php
+                    $catId = is_object($category) ? $category->id : $category;
+                    $catName = is_object($category) ? $category->name : $category;
+                @endphp
                 <button 
-                    @click="activeCategory = '{{ $category }}'"
-                    :class="activeCategory === '{{ $category }}' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
+                    @click="activeCategory = '{{ $catId }}'; activeCategoryName = '{{ $catName }}'"
+                    :class="activeCategory == '{{ $catId }}' ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30' : 'bg-[#141424] text-gray-400 hover:text-white hover:bg-[#1a1a30] border border-gray-800/60'"
                     class="px-5 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap">
-                    {{ $category }}
+                    {{ $catName }}
                 </button>
             @endforeach
         </div>
@@ -79,7 +86,7 @@
     <main class="max-w-7xl mx-auto px-6 py-4 pb-16">
         <div class="flex items-center justify-between mb-8">
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span x-text="activeCategory === 'All' ? 'All Events' : activeCategory + ' Events'"></span>
+                <span x-text="activeCategory === 'All' ? 'All Events' : activeCategoryName + ' Events'"></span>
             </h2>
             <a href="#" class="text-sm font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1 transition">
                 View All
@@ -89,19 +96,24 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($events as $event)
+            @php
+                $eventCatId = $event->category_id ?? $event->categoryRelation?->id ?? $event->category;
+                $eventCatName = $event->categoryRelation?->name ?? $event->category ?? 'Event';
+            @endphp
             <div 
-                x-show="activeCategory === 'All' || activeCategory === '{{ $event->category }}'"
+                x-show="activeCategory === 'All' || activeCategory == '{{ $eventCatId }}' || activeCategory == '{{ $eventCatName }}'"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-95"
                 x-transition:enter-end="opacity-100 transform scale-100"
                 class="group bg-[#121222] border border-gray-800/80 rounded-2xl overflow-hidden hover:border-purple-500/40 transition duration-300 flex flex-col justify-between shadow-lg">
+                
                 <div class="relative h-48 overflow-hidden">
                     <img src="{{ filter_var($event->image, FILTER_VALIDATE_URL) ? $event->image : asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#121222] via-transparent to-black/30"></div>
                     
                     <div class="absolute top-3 left-3 flex items-center gap-2">
                         <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-950/80 text-purple-300 border border-purple-500/30 backdrop-blur-md flex items-center gap-1">
-                            🎵 {{ $event->category }}
+                            🎵 {{ $eventCatName }}
                         </span>
                     </div>
 
@@ -145,7 +157,7 @@
                             </div>
                         </div>
 
-                        <!-- Get Ticket Button with ID -->
+                        <!-- Get Ticket Button -->
                         <a href="{{ route('events.details', $event->id) }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold text-sm py-2.5 px-4 rounded-xl shadow-md shadow-purple-600/20 transition flex items-center justify-center gap-1.5">
                             Get Ticket <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
@@ -174,10 +186,13 @@
             @endphp
 
             @forelse($sliderEvents as $key => $slide)
+                @php
+                    $slideCatName = $slide->categoryRelation?->name ?? $slide->category ?? 'Event';
+                @endphp
                 <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out {{ $key === 0 ? 'opacity-100' : 'opacity-0' }} slide-item">
                     <img src="{{ filter_var($slide->image, FILTER_VALIDATE_URL) ? $slide->image : asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}" class="w-full h-full object-cover filter brightness-110 contrast-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#121222] via-black/40 to-transparent flex flex-col justify-end p-6 md:p-8">
-                        <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">{{ $slide->category }}</span>
+                        <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full w-max mb-2">{{ $slideCatName }}</span>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-white">{{ $slide->title }}</h3>
                         <p class="text-gray-200 text-sm mt-1">{{ $slide->venue ?? $slide->location }} - {{ \Carbon\Carbon::parse($slide->date_time ?? $slide->date)->format('M d, Y') }}</p>
                     </div>
