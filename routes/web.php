@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\EditorManagementController;
 use App\Http\Controllers\Admin\ModeratorManagementController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -39,13 +40,11 @@ Route::get('/events/{id?}', [HomeController::class, 'eventDetails'])
 |--------------------------------------------------------------------------
 */
 
-Route::get('/cart', function () {
-    return view('frontend.cart.cart');
-})->name('cart');
-
-Route::get('/viewcart', function () {return view('frontend.cart.cart');})->name('cart.view');
-
-Route::get('/checkout', function () {return view('frontend.cart.checkout');})->name('checkout.view');
+    Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('/cart/delete/{id}', [CartController::class, 'deleteCart'])->name('cart.delete');
+    Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 
 
 /*
